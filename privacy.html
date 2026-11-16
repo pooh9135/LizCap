@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー — Liz CAP</title>
+  <link rel="icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400&family=Shippori+Mincho:wght@500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ui/tokens.css">
+  <link rel="stylesheet" href="ui/components.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="icon.png" alt="">Liz CAP</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <article class="doc">
+      <span class="eyebrow">Privacy</span>
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">2026 年 11 月 13 日 制定</p>
+      <p>Liz（以下「運営者」）は、アプリ「Liz CAP」（以下「本アプリ」）とこのサイトで扱う情報について、次のとおり定めます。</p>
+
+      <h2>1. 運営者が持たないもの</h2>
+      <p>運営者は利用者のアカウントを作らず、本アプリの使われ方を集める仕組み（アクセス解析・広告・利用状況の送信）も入れていません。書いたコード、作った動画、AI の会話、API キーを運営者が受け取ることはありません。</p>
+
+      <h2>2. パソコンの中にだけ保存するもの</h2>
+      <ul>
+        <li>エディタのコード、画面の配置、書き出しの設定</li>
+        <li>AI チャットの API キー、選んだモデル、料金の記録と上限</li>
+        <li>ライセンスキーと、その確認の結果</li>
+        <li>読み込んだ音声ファイル</li>
+      </ul>
+
+      <h2>3. 外へ送るもの</h2>
+      <table>
+        <tr><th>送り先</th><th>送るもの・目的</th></tr>
+        <tr><td>Anthropic（api.anthropic.com）</td><td>AI チャットを使ったときだけ、利用者の API キー、会話、今のコード、AI が求めたプレビューの画像を送ります。本アプリから直接送り、運営者を経由しません。扱いは Anthropic のプライバシーポリシーに従います。</td></tr>
+        <tr><td>Lemon Squeezy（api.lemonsqueezy.com）</td><td>有料版のライセンスキーを入れたときと、その後おおよそ 12 時間ごとに、ライセンスキーと、この PC を見分けるための名前（「Liz CAP」・OS の種類・ランダムな文字）を送り、キーが有効か確かめます。</td></tr>
+        <tr><td>GitHub（github.com）</td><td>起動時と「更新を確認」のときに、新しい版があるかを確かめ、更新を入れるときにファイルをダウンロードします。</td></tr>
+        <tr><td>Google Fonts</td><td>画面の書体を読み込みます。</td></tr>
+      </table>
+      <p>これらの通信では、送り先の会社に IP アドレスなどの接続の情報が伝わります。</p>
+
+      <h2>4. 購入のときの情報</h2>
+      <p>有料版の購入は Lemon Squeezy（Lemon Squeezy, LLC）が販売代理店として受け付け、氏名・メールアドレス・お支払いの情報・住所（国と地域）は Lemon Squeezy が扱います。運営者は、注文の管理とお問い合わせへの対応のために、Lemon Squeezy の管理画面で注文の情報（氏名・メールアドレス・注文の内容）を見ることができます。カード番号などのお支払いの情報は見られません。</p>
+
+      <h2>5. ローカルの MCP サーバー</h2>
+      <p>本アプリは、同じ PC の中の AI（Claude Code など）とつなぐために、127.0.0.1（この PC の中だけ）で待ち受けます。外のネットワークからはつながりません。</p>
+
+      <h2>6. このサイト</h2>
+      <p>このサイトは GitHub Pages で公開しています。アクセス解析や Cookie は使っていません。GitHub と Google Fonts には接続の情報が伝わります。</p>
+
+      <h2>7. 開示・訂正・削除</h2>
+      <p>運営者が持っている注文の情報について、開示・訂正・削除をご希望のときは、下のお問い合わせ先までご連絡ください。</p>
+
+      <h2>8. 変更</h2>
+      <p>このポリシーを変えたときは、このページでお知らせします。</p>
+
+      <h2>お問い合わせ</h2>
+      <p><a href="mailto:lizlaboratory7@gmail.com">lizlaboratory7@gmail.com</a></p>
+    </article>
+  </main>
+  <footer class="bottom">
+    <div class="wrap">
+      <span>© 2026 Liz CAP</span>
+      <nav>
+        <a href="terms.html">利用規約</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="refund.html">返金について</a>
+        <a href="tokushoho.html">特定商取引法に基づく表記</a>
+        <a href="mailto:lizlaboratory7@gmail.com">お問い合わせ</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
