@@ -1,16 +1,16 @@
-/* Linear 風のデザイントークン（D:/Claudcode/UI/black_Linear/variables.css の写し）。
-   ほぼ黒の地、紙のような白い文字、細い線。色のある部品は主ボタンのアシッドライムだけ。 */
+/* 販売サイトのデザイントークン。アプリ（src/ui/tokens.css）と同じ、Cursor の既定の暗いテーマの灰色。
+   名前はもとにした black_Linear のまま（--color-void がページの地、--color-graphite が線）。 */
 :root {
   /* Colors */
-  --color-void: #08090a;
-  --color-carbon: #0f1011;
-  --color-obsidian: #161718;
-  --color-graphite: #23252a;
-  --color-smoke: #383b3f;
-  --color-ash: #62666d;
-  --color-fog: #8a8f98;
-  --color-mist: #d0d6e0;
-  --color-bone: #e5e5e6;
+  --color-void: #141414;      /* ページの地（アプリのパネルと同じ） */
+  --color-carbon: #181818;    /* 面（アプリのエディタと同じ） */
+  --color-obsidian: #1f1f1f;  /* 浮いた面 */
+  --color-graphite: #2b2b2b;  /* 1px の線 */
+  --color-smoke: #3c3c3c;
+  --color-ash: #7a7a7a;
+  --color-fog: #a8a8a8;
+  --color-mist: #d6d6dd;
+  --color-bone: #e4e4e4;
   --color-paper: #ffffff;
   --color-acid-lime: #e4f222;
   --color-pulse-green: #27a644;
@@ -107,8 +107,8 @@
   --shadow-subtle-5: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
 
   /* Surfaces */
-  --surface-void: #08090a;
-  --surface-carbon: #0f1011;
-  --surface-obsidian: #161718;
-  --surface-slate: #23252a;
+  --surface-void: #141414;
+  --surface-carbon: #181818;
+  --surface-obsidian: #1f1f1f;
+  --surface-slate: #2b2b2b;
 }

@@ -1,4 +1,4 @@
-/* Liz CAP の紹介サイト。色・余白は ui/tokens.css（black_Linear）の値、部品は ui/components.css。 */
+/* Liz CAP の紹介サイト。色はアプリと同じ Cursor 風の灰色（ui/tokens.css）、部品は ui/components.css。 */
 
 html { scroll-behavior: smooth; }
 body { min-height: 100vh; }
@@ -8,7 +8,7 @@ a { color: inherit; }
 .label { color: var(--color-fog); font-size: var(--text-caption); }
 
 /* ---- 上の帯 ---- */
-.top { position: sticky; top: 0; z-index: 10; background: var(--color-void); border-bottom: 1px solid var(--color-graphite); }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(20, 20, 20, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-graphite); }
 .top .wrap { display: flex; align-items: center; gap: var(--spacing-24); height: 56px; }
 .brand { display: inline-flex; align-items: center; gap: var(--spacing-8); color: var(--color-paper); text-decoration: none;
          font-size: 15px; font-weight: var(--font-weight-w510); }
@@ -39,20 +39,19 @@ a { color: inherit; }
 section { padding: var(--section-gap) 0 0; }
 section > .wrap > .headline { margin: var(--spacing-16) 0 var(--spacing-48); max-width: 20em; }
 
-/* 細い線で区切った枠（面は塗らない） */
-.frame, .stats, .prices { display: grid; gap: 1px; background: var(--color-graphite); border: 1px solid var(--color-graphite);
-                          border-radius: var(--radius-frame); overflow: hidden; }
-.frame > *, .stats > *, .prices > * { background: var(--color-void); padding: var(--spacing-32); }
+/* 少し明るい灰色の面を 1px の線で囲む（アプリのパネルと同じ） */
+.frame, .stats, .prices { display: grid; gap: var(--spacing-12); }
+.frame > *, .stats > *, .prices > * { background: var(--color-carbon); border: 1px solid var(--color-graphite); border-radius: var(--radius-frame); padding: var(--spacing-32); }
 .frame { grid-template-columns: repeat(2, 1fr); }
 .cell .no { display: block; margin-bottom: var(--spacing-24); font-family: var(--font-mono); font-size: 12px; color: var(--color-ash); }
-.cell h3 { margin: 0 0 var(--spacing-8); font-size: 18px; line-height: 1.4; font-weight: var(--font-weight-w510); color: var(--color-paper); }
+.cell h3 { margin: 0 0 var(--spacing-8); font-size: 18px; line-height: 1.4; font-weight: 600; color: var(--color-paper); }
 .cell p { margin: 0; color: var(--color-fog); font-size: var(--text-body-sm); line-height: 1.7; }
-code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-mist); }
+code { font-family: var(--font-mono); font-size: 0.86em; color: #83d6c5; background: var(--color-obsidian); padding: 1px 5px; border-radius: 4px; }
 
 /* 速さ */
 .stats { grid-template-columns: repeat(3, 1fr); }
 .stat { display: flex; flex-direction: column; gap: var(--spacing-16); }
-.stat .figure { font-family: var(--font-serif); font-weight: 500; font-size: 56px; line-height: 1; color: var(--color-paper); }
+.stat .figure { font-family: var(--font-sans); font-weight: 600; font-size: 56px; line-height: 1; color: var(--color-paper); }
 .stat .figure small { margin-left: 6px; font-size: 20px; color: var(--color-fog); }
 .stat dl { display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-4) var(--spacing-16); margin: var(--spacing-8) 0 0;
            font-family: var(--font-mono); font-size: 13px; }
@@ -64,7 +63,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-mist
 /* 値段 */
 .prices { grid-template-columns: repeat(2, 1fr); }
 .price { display: flex; flex-direction: column; gap: var(--spacing-24); }
-.price .amount { font-family: var(--font-serif); font-weight: 500; font-size: 48px; line-height: 1; color: var(--color-paper); }
+.price .amount { font-family: var(--font-sans); font-weight: 600; font-size: 48px; line-height: 1; color: var(--color-paper); }
 .price .amount small { font-family: var(--font-sans); font-size: var(--text-body-sm); color: var(--color-fog); margin-left: var(--spacing-8); }
 .price ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--spacing-12); color: var(--color-mist); font-size: var(--text-body-sm); }
 .price li { display: flex; gap: var(--spacing-12); align-items: baseline; }
@@ -90,10 +89,10 @@ code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-mist
 
 /* ---- 規約などの文書 ---- */
 .doc { max-width: 760px; padding: var(--spacing-80) 0 0; }
-.doc h1 { font-family: var(--font-serif); font-weight: 500; font-size: 40px; line-height: 1.25; letter-spacing: 0.01em;
+.doc h1 { font-family: var(--font-sans); font-weight: 600; font-size: 40px; line-height: 1.25; letter-spacing: 0.01em;
           color: var(--color-paper); margin: var(--spacing-16) 0 var(--spacing-8); }
 .doc .updated { color: var(--color-ash); font-size: var(--text-caption); margin: 0 0 var(--spacing-48); }
-.doc h2 { font-size: 18px; line-height: 1.4; font-weight: var(--font-weight-w510); color: var(--color-paper); margin: var(--spacing-48) 0 var(--spacing-12); }
+.doc h2 { font-size: 18px; line-height: 1.4; font-weight: 600; color: var(--color-paper); margin: var(--spacing-48) 0 var(--spacing-12); }
 .doc p, .doc li { color: var(--color-mist); font-size: var(--text-body-sm); line-height: 1.8; }
 .doc ul, .doc ol { padding-left: 1.4em; }
 .doc a { color: var(--color-paper); }

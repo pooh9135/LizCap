@@ -1,13 +1,12 @@
-/* 販売サイトの部品。色・余白は tokens.css（black_Linear）の値を使い、
-   作りは Slash / Basedash / Factory / Hyperstudio / Freshman / Apple を参考にした：
-   - 大きな見出しだけ明朝（細め）、それ以外は Inter。太字は使わない
-   - 面は塗らず、1px の細い線だけで区切る。影・ぼかし・グラデーションは使わない
-   - 明るいもの（白いボタン）は 1 画面に 1 つだけ。色は映像の中の数式・点の色だけ
+/* 販売サイトの部品。見た目はアプリと同じ Cursor の既定の暗いテーマに合わせる：
+   - 地は灰色（#141414）、面は少し明るい灰色（#181818）に 1px の線。角は 10px
+   - 文字は OS の文字（見出しも同じ書体の太め）。明朝は使わない
+   - ボタンは灰色で塗り、主なボタンだけ明るい灰色（1 画面に 1 つ）
    - 小さなラベルは等幅（番号つき） */
 
 :root {
-  --font-sans: 'Inter', 'Zen Kaku Gothic New', 'Yu Gothic UI', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
-  --font-serif: 'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', ui-serif, serif;
+  --font-sans: system-ui, 'Segoe UI', 'Yu Gothic UI', 'Hiragino Sans', 'Inter', 'Zen Kaku Gothic New', sans-serif;
+  --font-serif: var(--font-sans);   /* 見出しも本文と同じ書体（もとは明朝） */
   --font-mono: 'JetBrains Mono', 'Zen Kaku Gothic New', ui-monospace, SFMono-Regular, Consolas, monospace;
   --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 150ms;
@@ -22,30 +21,31 @@ body {
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 h1, h2, h3, p { word-break: auto-phrase; text-wrap: pretty; }   /* 日本語を文節の切れ目で折り返す */
-::selection { background: var(--color-mist); color: var(--color-void); }
-*::-webkit-scrollbar { width: 8px; height: 8px; }
-*::-webkit-scrollbar-thumb { background: var(--color-graphite); border-radius: 4px; }
+::selection { background: #264f78; color: inherit; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: rgba(121, 121, 121, 0.4); border: 2px solid transparent; background-clip: padding-box; border-radius: 6px; }
 *::-webkit-scrollbar-track { background: transparent; }
 
 /* ---- 文字 ---- */
-.display, .headline { font-family: var(--font-serif); font-weight: 500; color: var(--color-paper); font-feature-settings: "palt"; }
-.display  { font-size: var(--text-heading-lg); line-height: 1.12; letter-spacing: 0.01em; }
-.headline { font-size: 40px; line-height: 1.3; letter-spacing: 0.01em; }
+.display, .headline { font-family: var(--font-sans); font-weight: 600; color: var(--color-paper); font-feature-settings: "palt"; }
+.display  { font-size: var(--text-heading-lg); line-height: 1.15; letter-spacing: -0.01em; }
+.headline { font-size: 36px; line-height: 1.3; letter-spacing: -0.005em; }
 .mono     { font-family: var(--font-mono); letter-spacing: -0.013em; }
 /* 番号つきの小さなラベル（01 / Features） */
 .eyebrow  { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-fog); }
 
-/* ---- ボタン：どれもピル形。白く塗るのは主ボタンだけ ---- */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px;
-       border: 1px solid var(--color-smoke); border-radius: var(--radius-pills); background: transparent; color: var(--color-mist);
-       font: 400 14px/1.4 var(--font-sans); text-decoration: none; cursor: pointer;
+/* ---- ボタン：アプリと同じく灰色で塗る。主ボタンだけ明るい灰色 ---- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px;
+       border: 1px solid transparent; border-radius: var(--radius-md); background: #2b2b2b; color: var(--color-bone);
+       font: 500 14px/1.4 var(--font-sans); text-decoration: none; cursor: pointer;
        transition: border-color var(--dur-fast) ease-out, background-color var(--dur-fast) ease-out, color var(--dur-fast) ease-out; }
-.btn:hover, .btn:focus-visible { border-color: var(--color-fog); color: var(--color-paper); outline: none; }
-.btn-primary { border-color: var(--color-paper); background: var(--color-paper); color: var(--color-void); font-weight: var(--font-weight-w510); }
-.btn-primary:hover, .btn-primary:focus-visible { background: var(--color-bone); border-color: var(--color-bone); color: var(--color-void); }
-.btn-ghost { border-color: transparent; padding-left: 4px; padding-right: 4px; }
+.btn:hover { background: #333333; color: var(--color-paper); }
+.btn:focus-visible { outline: 1px solid var(--color-smoke); outline-offset: 2px; }
+.btn-primary { background: var(--color-bone); color: #141414; }
+.btn-primary:hover, .btn-primary:focus-visible { background: var(--color-paper); color: #141414; }
+.btn-ghost { background: transparent; padding-left: 4px; padding-right: 4px; }
 .btn-ghost::after { content: "→"; transition: transform var(--dur-fast) ease-out; }
-.btn-ghost:hover { border-color: transparent; }
+.btn-ghost:hover { background: transparent; }
 .btn-ghost:hover::after { transform: translateX(3px); }
 
 /* ---- 出てくるときの動き ---- */
