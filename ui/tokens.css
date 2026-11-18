@@ -1,17 +1,19 @@
-/* 販売サイトのデザイントークン。アプリ（src/ui/tokens.css）と同じ、Cursor の既定の暗いテーマの灰色。
+/* 販売サイトのデザイントークン。計測の画面のような黒（参考: NORRVIK）。
+   ほぼ黒の地に白い文字と細い線。色は主ボタンの横の青と、映像の中の点だけ。
    名前はもとにした black_Linear のまま（--color-void がページの地、--color-graphite が線）。 */
 :root {
   /* Colors */
-  --color-void: #141414;      /* ページの地（アプリのパネルと同じ） */
-  --color-carbon: #181818;    /* 面（アプリのエディタと同じ） */
-  --color-obsidian: #1f1f1f;  /* 浮いた面 */
-  --color-graphite: #2b2b2b;  /* 1px の線 */
-  --color-smoke: #3c3c3c;
-  --color-ash: #7a7a7a;
-  --color-fog: #a8a8a8;
-  --color-mist: #d6d6dd;
-  --color-bone: #e4e4e4;
-  --color-paper: #ffffff;
+  --color-void: #0b0b0c;      /* ページの地 */
+  --color-carbon: #111113;    /* 面 */
+  --color-obsidian: #18181b;  /* 浮いた面 */
+  --color-graphite: #232326;  /* 1px の線 */
+  --color-smoke: #3a3a3f;     /* 強めの線・目盛り */
+  --color-ash: #6e6e74;
+  --color-fog: #9a9aa0;
+  --color-mist: #d4d4d8;
+  --color-bone: #ece8df;      /* 主ボタンの生成り */
+  --color-paper: #f4f4f5;
+  --color-signal: #9cc3ff;    /* 主ボタンの矢印・小さな印の青 */
   --color-acid-lime: #e4f222;
   --color-pulse-green: #27a644;
   --color-coral-red: #eb5757;
