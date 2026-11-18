@@ -14,26 +14,37 @@
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
+  <div class="loader" aria-hidden="true">
+    <p class="hud">Compiling scene <b data-load>000</b> %</p>
+    <span class="loader-bar"><i></i></span>
+  </div>
+
   <header class="top">
     <div class="wrap">
       <a class="brand" href="./"><img src="icon.png" alt="">Liz CAP</a>
       <nav>
-        <a href="#features">Features<sup>02</sup></a>
-        <a href="#speed">Speed<sup>03</sup></a>
-        <a href="#pricing">Pricing<sup>04</sup></a>
-        <a href="#faq">FAQ<sup>05</sup></a>
+        <a href="#features">Features<sup>03</sup></a>
+        <a href="#speed">Speed<sup>04</sup></a>
+        <a href="#pricing">Pricing<sup>05</sup></a>
+        <a href="#faq">FAQ<sup>06</sup></a>
       </nav>
       <a class="btn" href="https://github.com/pooh9135/lizcap/releases/latest">Download</a>
     </div>
   </header>
 
+  <!-- 左の目盛り（ページ全体についてくる）。今いる節の番号が青くなる -->
+  <div class="page-ruler" aria-hidden="true">
+    <i class="progress"></i>
+    <a href="#top" data-sec="top">01</a><a href="#manifesto" data-sec="manifesto">02</a><a href="#features" data-sec="features">03</a>
+    <a href="#speed" data-sec="speed">04</a><a href="#pricing" data-sec="pricing">05</a><a href="#faq" data-sec="faq">06</a>
+  </div>
+
   <main>
-    <div class="stage">
+    <div class="stage" id="top">
       <video class="stage-video" src="hero.mp4" poster="hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-      <p class="hud corner tl">Fig. 01 / Unit circle / sin θ<br>Scene / <a href="hero.liz.ts.txt">hero.liz.ts</a> / 27 lines</p>
-      <p class="hud corner tr" aria-hidden="true">θ <b data-hud="deg">000</b>° / t <b data-hud="t">0.00</b> s<br>Frame <b data-hud="frame">000</b> / 270</p>
-      <p class="hud corner br" aria-hidden="true">Rendered in Liz CAP / 1920 × 1080 / 30 fps</p>
-      <div class="ruler" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span></div>
+      <p class="hud corner tl">Fig. 01 / Lorenz attractor / σ 10 · ρ 28 · β 8⁄3<br>Scene / <a href="hero.liz.ts.txt">hero.liz.ts</a> / 43 lines</p>
+      <p class="hud corner tr" aria-hidden="true">Orbit <b data-hud="deg">000</b>° / t <b data-hud="t">0.00</b> s<br>Frame <b data-hud="frame">000</b> / 288</p>
+      <p class="hud corner br" aria-hidden="true">Rendered in Liz CAP / 1 252 objects / WebGPU</p>
       <div class="wrap hero">
         <p class="eyebrow enter"><span class="no">(01)</span> Code / Animate / Preview</p>
         <h1 class="display enter-2">書いた瞬間に、<br><span class="dim">動く図になる。</span></h1>
@@ -48,76 +59,99 @@
         <div class="hud">直してから絵まで<span class="value">0.01 s</span></div>
         <div class="hud">Version<span class="value">0.1.1 / Win 10·11</span></div>
         <nav aria-label="できること">
-          <a class="hud" href="#features">01<span class="value">書いたらすぐ映る</span></a>
-          <a class="hud" href="#features">02<span class="value">つかんで動かす</span></a>
-          <a class="hud" href="#features">03<span class="value">AI と作る</span></a>
-          <a class="hud" href="#features">04<span class="value">MP4 に書き出す</span></a>
+          <a class="hud" href="#step-1">01<span class="value">書いたらすぐ映る</span></a>
+          <a class="hud" href="#step-2">02<span class="value">つかんで動かす</span></a>
+          <a class="hud" href="#step-3">03<span class="value">AI と作る</span></a>
+          <a class="hud" href="#step-4">04<span class="value">MP4 に書き出す</span></a>
         </nav>
       </div>
     </div>
 
-    <div class="wrap">
-      <figure class="shot">
-        <div class="fig-bar hud"><span>Fig. 02 / Editor</span><span>Preview / Code / AI</span></div>
-        <img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット">
-        <figcaption>左にプレビュー、中央にコード、右に AI。プレビューの点をつかんで動かすと、コードの数字が変わります。</figcaption>
-      </figure>
-    </div>
+    <section id="manifesto" class="manifesto">
+      <div class="wrap">
+        <p class="hud">Fig. 02 / Manifesto / ゆっくり読む</p>
+        <p class="scrub" data-scrub>数式は、動いて初めて分かることがある。だから、図を作るのはコードを書くのと同じ速さであるべきだ。書けばすぐ映り、つかめばコードが変わり、頼めば直る。Liz CAP は、説明したい人のための道具です。</p>
+      </div>
+    </section>
 
     <section id="features">
       <div class="wrap">
-        <div class="section-head">
-          <div><span class="eyebrow"><span class="no">(02)</span> Features</span>
+        <div class="section-head reveal">
+          <div><span class="eyebrow"><span class="no">(03)</span> Features / Code to film</span>
           <h2 class="headline">コードと絵が、<br><span class="dim">いつも同じ。</span></h2></div>
-          <p>書く・つかむ・頼む・書き出す。どこから触っても、コードとプレビューが同じ状態に戻ります。</p>
+          <p>書く・つかむ・頼む・書き出す。どこから触っても、コードとプレビューが同じ状態に戻ります。右の映像はどれも、Liz CAP で作ってそのまま書き出したものです。</p>
         </div>
-        <div class="frame">
-          <div class="cell">
-            <span class="no hud">Fig. 02.1</span>
-            <h3>書いたらすぐ映る</h3>
-            <p>保存も実行ボタンもいりません。1 文字変えるたびにシーンを作り直し、プレビューとタイムラインがそのまま追いつきます。シークや再生ではコードを動かし直さないので、長い動画でも軽いままです。</p>
+        <div class="tour">
+          <div class="tour-steps">
+            <article class="step" id="step-1" data-step="0">
+              <p class="hud"><span class="no">01</span> — Live preview</p>
+              <h3>書いたらすぐ映る</h3>
+              <p>保存も実行ボタンもいりません。1 文字変えるたびにシーンを作り直し、プレビューとタイムラインがそのまま追いつきます。シークや再生ではコードを動かし直さないので、長い動画でも軽いままです。</p>
+              <dl class="spec"><dt>Rebuild</dt><dd>約 0.01 s</dd><dt>Renderer</dt><dd>WebGPU</dd><dt>Seek</dt><dd>コードを再実行しない</dd></dl>
+            </article>
+            <article class="step" id="step-2" data-step="1">
+              <p class="hud"><span class="no">02</span> — Direct manipulation</p>
+              <h3>つかんで動かすと、コードが変わる</h3>
+              <p>プレビューの円や点をドラッグすると、位置を決めている <code>x</code> や <code>moveTo([3, 2])</code> の数字が書き換わります。3D ではカメラの角度も。手で合わせて、コードで残せます。</p>
+              <dl class="spec"><dt>Drag</dt><dd>位置・カメラの角度</dd><dt>Click</dt><dd>その行へ移動</dd></dl>
+            </article>
+            <article class="step" id="step-3" data-step="2">
+              <p class="hud"><span class="no">03</span> — AI pair</p>
+              <h3>AI と一緒に作る</h3>
+              <p>右の AI チャットに「cos のグラフも足して」と頼むと、コードを書き換えます。変わった所は緑と赤で見え、「採用」か「却下」で決められます。Claude Code などの AI からも MCP でつなげます。</p>
+              <dl class="spec"><dt>Review</dt><dd>採用 / 却下</dd><dt>MCP</dt><dd>liz-cap</dd></dl>
+            </article>
+            <article class="step" id="step-4" data-step="3">
+              <p class="hud"><span class="no">04</span> — Export</p>
+              <h3>GPU で MP4 に書き出す</h3>
+              <p>グラフ・数式（LaTeX 記法）・文字・表・ベクトル場・3D の立体を、1080p 60fps や 4K で MP4 にします。GIF や PNG の連番（背景を透明にもできます）にも書き出せ、音声と字幕も付けられます。</p>
+              <dl class="spec"><dt>Video</dt><dd>MP4 (H.264) · 4K まで</dd><dt>Other</dt><dd>GIF · PNG 連番 · SRT</dd></dl>
+            </article>
           </div>
-          <div class="cell">
-            <span class="no hud">Fig. 02.2</span>
-            <h3>つかんで動かすと、コードが変わる</h3>
-            <p>プレビューの円や点をドラッグすると、位置を決めている <code>x</code> や <code>moveTo([3, 2])</code> の数字が書き換わります。3D ではカメラの角度も。手で合わせて、コードで残せます。</p>
-          </div>
-          <div class="cell">
-            <span class="no hud">Fig. 02.3</span>
-            <h3>AI と一緒に作る</h3>
-            <p>右の AI チャットに「cos のグラフも足して」と頼むと、コードを書き換えます。変わった所は緑と赤で見え、「採用」か「却下」で決められます。Claude Code などの AI からも MCP でつなげます。</p>
-          </div>
-          <div class="cell">
-            <span class="no hud">Fig. 02.4</span>
-            <h3>GPU で MP4 に書き出す</h3>
-            <p>グラフ・数式（LaTeX 記法）・文字・表・ベクトル場・3D の立体を、1080p 60fps や 4K で MP4 にします。GIF や PNG の連番（背景を透明にもできます）にも書き出せ、音声と字幕も付けられます。</p>
-          </div>
+          <figure class="tour-figure" aria-label="Liz CAP で作った映像">
+            <div class="fig-bar hud"><span data-fig-label>Fig. 03.1 / Live preview</span><span><a data-fig-src href="figs/write.liz.ts.txt">Source</a></span></div>
+            <div class="screens">
+              <video class="screen is-on" src="figs/write.mp4" poster="figs/write-poster.jpg" muted loop playsinline preload="none"></video>
+              <video class="screen" src="figs/drag.mp4" poster="figs/drag-poster.jpg" muted loop playsinline preload="none"></video>
+              <video class="screen" src="figs/ai.mp4" poster="figs/ai-poster.jpg" muted loop playsinline preload="none"></video>
+              <video class="screen" src="figs/export.mp4" poster="figs/export-poster.jpg" muted loop playsinline preload="none"></video>
+            </div>
+            <div class="tabs hud"><a href="#step-1" class="is-on">01 書く</a><a href="#step-2">02 つかむ</a><a href="#step-3">03 頼む</a><a href="#step-4">04 書き出す</a></div>
+          </figure>
         </div>
+      <figure class="shot">
+        <div class="fig-bar hud"><span>Fig. 03.5 / Editor</span><span>Preview / Code / AI</span></div>
+        <img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット">
+        <figcaption>左にプレビュー、中央にコード、右に AI。プレビューの点をつかんで動かすと、コードの数字が変わります。</figcaption>
+      </figure>
       </div>
     </section>
 
     <section id="speed">
       <div class="wrap">
-        <div class="section-head">
-          <div><span class="eyebrow"><span class="no">(03)</span> Speed / Benchmark</span>
+        <div class="section-head reveal">
+          <div><span class="eyebrow"><span class="no">(04)</span> Speed / Benchmark</span>
           <h2 class="headline">同じ 11 秒のシーンを、<br><span class="dim">Manim と比べて。</span></h2></div>
-          <p>GPU で描き、シークや再生ではコードを動かし直しません。直した結果が、ほぼ待たずに見えます。</p>
+          <p>GPU で描き、シークや再生ではコードを動かし直しません。直した結果が、ほぼ待たずに見えます。下の線は、Manim の時間を 100 とした長さです。</p>
         </div>
         <div class="stats">
           <div class="stat">
             <span class="label">コードを直してから絵が出るまで</span>
-            <span class="figure">約 300<small>倍</small></span>
+            <span class="figure">約 <b data-count="300">300</b><small>倍</small></span>
             <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.01 秒</dd></dl>
+            <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:1.2%"></span></div>
           </div>
           <div class="stat">
             <span class="label">1080p 60fps の動画を書き出す</span>
-            <span class="figure">約 2<small>倍</small></span>
+            <span class="figure">約 <b data-count="2">2</b><small>倍</small></span>
             <dl><dt>Manim</dt><dd>9〜11 秒</dd><dt>Liz CAP</dt><dd class="win">4.6〜5.1 秒</dd></dl>
+            <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:48%"></span></div>
           </div>
           <div class="stat">
             <span class="label">480p 15fps の動画を書き出す</span>
-            <span class="figure">約 3.5<small>倍</small></span>
+            <span class="figure">約 <b data-count="3.5" data-decimals="1">3.5</b><small>倍</small></span>
             <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.8 秒</dd></dl>
+            <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:27%"></span></div>
           </div>
         </div>
         <p class="foot-note">2026 年 11 月、Core i7-14700F / GeForce RTX 4080 SUPER で計測。Manim Community v0.22.1（低画質 -ql で作り直し）。文字・座標軸・sin のグラフ・円 30 個のシーン。</p>
@@ -127,7 +161,7 @@
     <section id="pricing">
       <div class="wrap">
         <div class="section-head">
-          <div><span class="eyebrow"><span class="no">(04)</span> Pricing</span>
+          <div><span class="eyebrow"><span class="no">(05)</span> Pricing</span>
           <h2 class="headline">まず無料で。<br><span class="dim">続きは月 980 円。</span></h2></div>
           <p>無料版でも、エディタ・ドラッグ・AI チャット・MCP はすべて使えます。長い動画を透かしなしで出したくなったら有料版へ。</p>
         </div>
@@ -161,7 +195,7 @@
     <section id="faq">
       <div class="wrap">
         <div class="section-head">
-          <div><span class="eyebrow"><span class="no">(05)</span> FAQ</span>
+          <div><span class="eyebrow"><span class="no">(06)</span> FAQ</span>
           <h2 class="headline">よくある質問</h2></div>
           <p>ほかに分からないことがあれば、<a href="mailto:lizlaboratory7@gmail.com">お問い合わせ</a>ください。</p>
         </div>
@@ -212,20 +246,103 @@
     </div>
   </footer>
   <script>
-    const v = document.querySelector(".stage-video");
-    // 動きを減らす設定の人には、背景の映像を止めて最初のコマだけ見せる
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { v.removeAttribute("autoplay"); v.pause(); }
-    // 右上の数字を映像の時刻に合わせる（1 周 9 秒、30 fps）
-    const hud = (k) => document.querySelector(`[data-hud="${k}"]`);
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const $ = (s, el = document) => el.querySelector(s);
+    const $$ = (s, el = document) => [...el.querySelectorAll(s)];
     const pad = (n, w) => String(n).padStart(w, "0");
+
+    // ---- 読み込み: 映像が流せるようになるまで数字を進める（長くても 1.6 秒） ----
+    const hero = $(".stage-video");
+    const loader = $(".loader");
+    if (reduce) { hero.removeAttribute("autoplay"); hero.pause(); loader.remove(); }
+    else {
+      // タイマーで進める（requestAnimationFrame は裏のタブで止まるため）。1.6 秒たったら必ず消す
+      let shown = 0, ready = false;
+      const t0 = Date.now();
+      hero.addEventListener("canplay", () => (ready = true), { once: true });
+      const timer = setInterval(() => {
+        const el = Date.now() - t0;
+        const target = ready ? 100 : Math.min(92, el / 12);
+        shown = Math.min(100, shown + (target - shown) * 0.18 + 0.4);
+        if (el > 1600) shown = 100;
+        $("[data-load]").textContent = pad(Math.floor(shown), 3);
+        loader.style.setProperty("--p", shown / 100);
+        if (shown >= 100) { clearInterval(timer); loader.classList.add("done"); setTimeout(() => loader.remove(), 700); }
+      }, 16);
+    }
+
+    // ---- 最初の面の右上: 映像の時刻から角度とコマ番号（1 周 12 秒、24 fps） ----
     const tick = () => {
-      const t = v.currentTime || 0;
-      hud("t").textContent = t.toFixed(2);
-      hud("deg").textContent = pad(Math.round((t / 9) * 360) % 360, 3);
-      hud("frame").textContent = pad(Math.floor(t * 30), 3);
+      const t = hero.currentTime || 0;
+      $("[data-hud=t]").textContent = t.toFixed(2);
+      $("[data-hud=deg]").textContent = pad(Math.round((t / 12) * 360) % 360, 3);
+      $("[data-hud=frame]").textContent = pad(Math.floor(t * 24), 3);
       requestAnimationFrame(tick);
     };
     tick();
+
+    // ---- 左の目盛り: 進み具合の線と、今いる節の番号 ----
+    const marks = $$(".page-ruler a");
+    const sections = marks.map((a) => document.getElementById(a.dataset.sec));
+    const onScroll = () => {
+      const h = document.documentElement;
+      const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+      $(".page-ruler .progress").style.setProperty("--p", p);
+      let cur = 0;
+      sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < innerHeight * 0.45) cur = i; });
+      marks.forEach((m, i) => m.classList.toggle("is-on", i === cur));
+      scrub();
+      if (typeof pickStep === "function") pickStep();
+    };
+
+    // ---- 宣言の文章: スクロールに合わせて 1 文字ずつ白くなる ----
+    const scrubEl = $("[data-scrub]");
+    const chars = [...scrubEl.textContent].map((c) => { const s = document.createElement("span"); s.textContent = c; return s; });
+    scrubEl.textContent = ""; chars.forEach((c) => scrubEl.append(c));
+    function scrub() {
+      const r = scrubEl.getBoundingClientRect();
+      const p = reduce ? 1 : Math.min(1, Math.max(0, (innerHeight * 0.8 - r.top) / (r.height + innerHeight * 0.35)));
+      const n = Math.round(p * chars.length);
+      chars.forEach((c, i) => c.classList.toggle("lit", i < n));
+    }
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+
+    // ---- できること: 左の説明が真ん中に来たら、右の映像を切り替える ----
+    const screens = $$(".screen"), tabs = $$(".tabs a");
+    const labels = ["Fig. 03.1 / Live preview", "Fig. 03.2 / Direct manipulation", "Fig. 03.3 / AI pair", "Fig. 03.4 / Export"];
+    const srcs = ["write", "drag", "ai", "export"];
+    let current = -1;
+    const show = (i) => {
+      if (i === current) return; current = i;
+      screens.forEach((v, j) => { v.classList.toggle("is-on", j === i); if (j === i) { v.preload = "auto"; if (!reduce) v.play().catch(() => {}); } else v.pause(); });
+      tabs.forEach((t, j) => t.classList.toggle("is-on", j === i));
+      $$(".step").forEach((s, j) => s.classList.toggle("is-on", j === i));
+      $("[data-fig-label]").textContent = labels[i];
+      $("[data-fig-src]").href = `figs/${srcs[i]}.liz.ts.txt`;
+    };
+    // 画面の真ん中の高さにある説明を選ぶ（スクロールのたびに onScroll から呼ぶ）
+    const steps = $$(".step");
+    function pickStep() {
+      let i = 0;
+      steps.forEach((s, j) => { if (s.getBoundingClientRect().top < innerHeight * 0.55) i = j; });
+      show(i);
+    }
+    show(0);
+    onScroll();
+
+    // ---- 出てくる動き・数字を数える・比べる線を伸ばす ----
+    const seen = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in"); seen.unobserve(e.target);
+      $$("[data-count]", e.target).forEach((b) => {
+        const to = +b.dataset.count, d = +(b.dataset.decimals || 0), t0 = performance.now();
+        if (reduce) return;
+        const run = (now) => { const k = Math.min(1, (now - t0) / 1100); b.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(d); if (k < 1) requestAnimationFrame(run); };
+        requestAnimationFrame(run);
+      });
+    }), { threshold: 0.2 });
+    $$(".reveal, .stat, .price, .faq details, .shot").forEach((el) => { el.classList.add("reveal"); seen.observe(el); });
   </script>
 </body>
 </html>

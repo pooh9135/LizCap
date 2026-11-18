@@ -23,20 +23,16 @@ a { color: inherit; }
 
 /* ---- 最初の面 ---- */
 .stage { position: relative; overflow: hidden; min-height: clamp(640px, calc(100vh - 61px), 940px); display: flex; flex-direction: column; border-bottom: var(--line); }
-.stage-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% center; pointer-events: none; }
+.stage-video { position: absolute; top: 0; bottom: 0; right: 0; width: 72%; height: 100%; object-fit: cover; object-position: center; pointer-events: none;
+               -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 28%); mask-image: linear-gradient(90deg, transparent 0, #000 28%); }
 /* 四隅の小さな文字（図の番号・時刻） */
 .stage .corner { position: absolute; z-index: 1; margin: 0; }
-.stage .corner.tl { top: var(--spacing-24); left: 72px; }
+.stage .corner.tl { top: var(--spacing-24); left: var(--spacing-32); }
 .stage .corner.tr { top: var(--spacing-24); right: var(--spacing-32); text-align: right; }
 .stage .corner.br { bottom: 108px; right: var(--spacing-32); text-align: right; color: var(--color-ash); }
 .stage .corner b { font-weight: 400; color: var(--color-paper); }
-/* 左の目盛り */
-.ruler { position: absolute; z-index: 1; top: 96px; bottom: 96px; left: var(--spacing-32); width: 24px; border-left: 1px solid var(--color-smoke);
-         display: flex; flex-direction: column; justify-content: space-between; }
-.ruler span { position: relative; padding-left: 8px; font: 400 9px/1 var(--font-mono); color: var(--color-ash); }
-.ruler span::before { content: ""; position: absolute; left: 0; top: 50%; width: 5px; border-top: 1px solid var(--color-smoke); }
 .hero { position: relative; z-index: 1; flex: 1; width: 100%; margin: 0; display: flex; flex-direction: column; justify-content: center;
-        max-width: none; padding: 120px var(--spacing-32) 140px 72px; }
+        max-width: none; padding: 120px var(--spacing-32) 140px var(--spacing-32); }
 .hero .display { margin: var(--spacing-20) 0 var(--spacing-24); max-width: 9.5em; }
 .hero .lead { max-width: 27em; font-size: 15px; line-height: 1.8; color: var(--color-fog); margin: 0; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-24); margin-top: var(--spacing-40); }
@@ -134,6 +130,74 @@ code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-sign
 .doc td { color: var(--color-mist); }
 .todo { color: var(--color-coral-red); }   /* 公開前に埋める所 */
 
+/* ---- 読み込み ---- */
+.loader { position: fixed; inset: 0; z-index: 50; display: grid; place-content: center; gap: 14px; background: var(--color-void);
+          transition: opacity 600ms var(--ease-enter), visibility 600ms; }
+.loader .hud b { font-weight: 400; color: var(--color-paper); }
+.loader-bar { display: block; width: 220px; height: 1px; background: var(--color-graphite); }
+.loader-bar i { display: block; height: 1px; width: calc(var(--p, 0) * 100%); background: var(--color-signal); }
+.loader.done { opacity: 0; visibility: hidden; }
+
+/* ---- ページ全体についてくる左の目盛り ---- */
+.page-ruler { position: fixed; z-index: 5; left: 0; top: 61px; bottom: 0; width: 44px; border-right: var(--line);
+              display: flex; flex-direction: column; justify-content: space-around; padding: 40px 0; box-sizing: border-box;
+              background: repeating-linear-gradient(180deg, transparent 0 23px, var(--color-graphite) 23px 24px) right / 6px 100% no-repeat; }
+.page-ruler a { position: relative; padding-left: 12px; font: 400 9px/1 var(--font-mono); color: var(--color-ash); text-decoration: none; letter-spacing: 0.06em; }
+.page-ruler a::after { content: ""; position: absolute; right: -1px; top: 50%; width: 10px; border-top: 1px solid var(--color-smoke); }
+.page-ruler a.is-on { color: var(--color-signal); }
+.page-ruler a.is-on::after { width: 16px; border-color: var(--color-signal); }
+.page-ruler .progress { position: absolute; right: -1px; top: 0; width: 1px; height: calc(var(--p, 0) * 100%); background: var(--color-signal); }
+body { padding-left: 44px; }
+.top { margin-left: -44px; }
+
+/* ---- 宣言（スクロールで白くなる） ---- */
+.manifesto { padding: 160px 0 120px; }
+.manifesto .hud { margin: 0 0 var(--spacing-32); }
+.scrub { margin: 0; max-width: 18em; font: 500 clamp(30px, 4.2vw, 56px)/1.32 var(--font-sans); letter-spacing: -0.03em; color: var(--color-paper); }
+.scrub span { color: #2c2c31; transition: color 260ms ease-out; }
+.scrub span.lit { color: var(--color-paper); }
+
+/* ---- できること: 左の説明が進み、右の図は止まったまま ---- */
+.tour { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: var(--spacing-56); }
+.step { min-height: min(72vh, 620px); display: flex; flex-direction: column; justify-content: center; padding: var(--spacing-32) 0; border-top: var(--line);
+        opacity: 0.35; transition: opacity 400ms ease-out; }
+.step:first-child { border-top: 0; }
+.step.is-on { opacity: 1; }
+.step .hud .no { color: var(--color-signal); }
+.step h3 { margin: var(--spacing-16) 0 var(--spacing-16); font: 500 30px/1.25 var(--font-sans); letter-spacing: -0.025em; color: var(--color-paper); }
+.step > p:not(.hud) { margin: 0; color: var(--color-fog); font-size: 15px; line-height: 1.85; max-width: 30em; }
+.spec { display: grid; grid-template-columns: 110px 1fr; margin: var(--spacing-32) 0 0; border-top: var(--line); font: 400 11px/1.4 var(--font-mono); letter-spacing: 0.06em; }
+.spec dt, .spec dd { margin: 0; padding: 10px 0; border-bottom: var(--line); }
+.spec dt { color: var(--color-ash); text-transform: uppercase; }
+.spec dd { color: var(--color-mist); }
+.tour-figure { position: sticky; top: 96px; align-self: start; margin: 0; }
+.tour-figure .fig-bar { display: flex; justify-content: space-between; padding: 0 0 var(--spacing-12); }
+.tour-figure .fig-bar a { color: var(--color-fog); text-underline-offset: 3px; }
+.screens { position: relative; aspect-ratio: 16 / 9; border: var(--line); background: var(--color-void); }
+.screen { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 500ms ease-out; }
+.screen.is-on { opacity: 1; }
+.screens::before, .screens::after { content: "+"; position: absolute; z-index: 1; font: 300 12px/1 var(--font-mono); color: var(--color-fog); }
+.screens::before { left: -4px; top: -8px; }
+.screens::after { right: -4px; bottom: -9px; }
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--line); }
+.tabs a { padding: 12px 0; text-decoration: none; color: var(--color-ash); border-top: 1px solid transparent; margin-top: -1px; transition: color 200ms, border-color 200ms; }
+.tabs a.is-on { color: var(--color-paper); border-color: var(--color-signal); }
+
+/* ---- 速さ: Manim を 100 とした線 ---- */
+.bars { display: grid; gap: 6px; margin-top: var(--spacing-8); }
+.bar { display: block; height: 3px; width: 0; background: var(--color-smoke); transition: width 1100ms var(--ease-enter) 150ms; }
+.bar.l { background: var(--color-signal); }
+.stat.in .bar { width: var(--w); }
+.stat .figure b { font-weight: inherit; }
+
+/* ---- 画面に入ったら出てくる ---- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--ease-enter), transform 700ms var(--ease-enter); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scrub span { transition: none; }
+}
+
 @media (max-width: 1100px) {
   .frame { grid-template-columns: repeat(2, 1fr); }
   .top nav { display: none; }
@@ -146,10 +210,17 @@ code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-sign
   .section-head { grid-template-columns: 1fr; gap: var(--spacing-20); }
   .hero { padding: 96px var(--spacing-20) 48px; }
   .hero .display { font-size: var(--text-heading); }
-  .ruler, .stage .corner.br { display: none; }
+  .stage .corner.br { display: none; }
+  .page-ruler { display: none; }
+  body { padding-left: 0; }
+  .top { margin-left: 0; }
+  .tour { grid-template-columns: 1fr; gap: 0; }
+  .tour-figure { top: 61px; z-index: 2; background: var(--color-void); padding-top: var(--spacing-12); grid-row: 1; }
+  .step { min-height: min(60vh, 480px); }
+  .stage-video { width: 100%; -webkit-mask-image: none; mask-image: none; }
   .stage .corner.tl { left: var(--spacing-20); }
   .stage .corner.tr { right: var(--spacing-20); }
-  .stage-video { object-position: 78% center; opacity: 0.35; }
+  .stage-video { object-position: 60% center; opacity: 0.35; }
   .readout { grid-template-columns: repeat(3, 1fr); }
   .readout > div { padding: var(--spacing-12) var(--spacing-20); }
   .readout nav { grid-column: 1 / -1; grid-template-columns: repeat(2, 1fr); border-top: var(--line); }

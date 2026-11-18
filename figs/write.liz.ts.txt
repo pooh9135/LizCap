@@ -1,0 +1,25 @@
+// 販売サイト「できること 01 書いたらすぐ映る」の図（site/figs/write.mp4）。Liz CAP で書き出したもの。
+// コードの数字 a と k が変わると、グラフがその場で変わる。終わりは始まりと同じ形なので、くり返してもつながる。
+
+const INK = "#d4d4d8", DIM = "#3a3a3f", SIGNAL = "#9cc3ff", FOG = "#9a9aa0";
+background("#0b0b0c");
+
+const a = tracker(1), k = tracker(1);
+const ax = axes({ xRange: [-7, 7, 1], yRange: [-2.5, 2.5, 1], width: 12, height: 4.2, y: -1.2, color: DIM });
+always(() => ax.plot((x) => a.value() * Math.sin(k.value() * x), { color: SIGNAL, width: 0.035 }));
+
+// 上のコード（数字の所だけ always で書き直す）
+always(() => {
+  const A = a.value().toFixed(2), K = k.value().toFixed(2);
+  return text(`const graph = ax.plot(x => ${A} * sin(${K} * x));`,
+    { y: 2.9, size: 0.34, color: INK, font: "JetBrains Mono", colors: { const: "#83d6c5", [A]: "#ebc88d", [K]: "#ebc88d" } });
+});
+line({ from: [-6, 2.35], to: [6, 2.35], color: DIM, width: 0.01 });
+text("PREVIEW / 0.01 s", { x: 4.9, y: 2.0, size: 0.26, color: FOG, font: "JetBrains Mono" });
+
+wait(0.6);
+play(a.set(2), { duration: 1.4 });
+play(k.set(2), { duration: 1.4 });
+play(a.set(0.6), k.set(3), { duration: 1.6 });
+play(a.set(1), k.set(1), { duration: 1.6 });
+wait(0.6);

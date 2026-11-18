@@ -1,0 +1,49 @@
+// 販売サイト「できること 03 AI と一緒に作る」の図（site/figs/ai.mp4）。
+// 「cos のグラフも足して」と頼むと、足した行が緑で出て、グラフが増える。最後は消えて始まりに戻る。
+
+const INK = "#d4d4d8", DIM = "#3a3a3f", SIGNAL = "#9cc3ff", FOG = "#9a9aa0", ADD = "#2ea04366";
+background("#0b0b0c");
+
+// 左: コード
+const c1 = text("const ax = axes({ ... });", { x: -6.3, y: 2.2, size: 0.3, color: FOG, font: "JetBrains Mono", align: "left" });
+const c2 = text("ax.plot(x => Math.sin(x));", { x: -6.3, y: 1.65, size: 0.3, color: FOG, font: "JetBrains Mono", align: "left" });
+const bar = rect({ x: -3.15, y: 1.1, w: 6.8, h: 0.46, fill: ADD, stroke: null });
+const c3 = text("ax.plot(x => Math.cos(x), { color: BLUE });", { x: -6.3, y: 1.1, size: 0.3, color: "#7ee2a8", font: "JetBrains Mono", align: "left" });
+
+// 下: 頼む欄
+const ask = rect({ x: -3.55, y: -2.6, w: 5.9, h: 0.9, radius: 0.15, fill: "#141416", stroke: DIM, strokeWidth: 0.015 });
+const askText = text("cos のグラフも足して", { x: -6.25, y: -2.6, size: 0.32, color: INK, align: "left" });
+const accept = rect({ x: -5.5, y: 0.35, w: 1.4, h: 0.42, fill: "#ece8df", stroke: null });
+const acceptText = text("採用", { x: -5.5, y: 0.35, size: 0.28, color: "#111111" });
+const reject = rect({ x: -3.9, y: 0.35, w: 1.4, h: 0.42, fill: null, stroke: DIM, strokeWidth: 0.015 });
+const rejectText = text("却下", { x: -3.9, y: 0.35, size: 0.28, color: FOG });
+
+// 右: プレビュー
+const ax = axes({ xRange: [-4, 4, 1], yRange: [-1.5, 1.5, 1], width: 5.4, height: 3.2, x: 3.6, y: 0.4, color: DIM });
+ax.plot((x) => Math.sin(x), { color: INK, width: 0.03 });
+const cosG = ax.plot((x) => Math.cos(x), { color: SIGNAL, width: 0.035 });
+text("PREVIEW", { x: 1.45, y: 2.4, size: 0.26, color: FOG, font: "JetBrains Mono" });
+
+// 左の文字は左端をそろえる
+for (const h of [c1, c2, c3]) h.alignTo([-6.2, 0], LEFT);
+askText.alignTo([-6.2, 0], LEFT);
+c3.shift([0.25, 0]);   // 色付きの文字は測った幅が少し広いので、ほかの行に合わせる
+for (const h of [bar, c3, accept, acceptText, reject, rejectText, cosG, askText]) h.setOpacity(0);
+
+wait(0.4);
+askText.setOpacity(1);
+play(typeText(askText), { duration: 1.2 });
+wait(0.4);
+play(askText.setOpacity(0.35), { duration: 0.3 });
+play(fadeIn(bar), { duration: 0.3 });
+play(fadeIn(c3, { shift: [0.3, 0] }), { duration: 0.8 });
+wait(0.4);
+cosG.setOpacity(1);
+play(create(cosG), { duration: 1.2 });
+play(fadeIn(accept), fadeIn(acceptText), fadeIn(reject), fadeIn(rejectText), { duration: 0.4 });
+wait(0.6);
+play(indicate(accept, { color: null, scale: 1.08 }), { duration: 0.5 });
+play(bar.setOpacity(0), c3.setColor(FOG), fadeOut(accept), fadeOut(acceptText), fadeOut(reject), fadeOut(rejectText), { duration: 0.5 });
+wait(1);
+play(fadeOut(c3), fadeOut(cosG), askText.setOpacity(0), { duration: 0.6 });
+wait(0.3);

@@ -1,0 +1,23 @@
+// 販売サイト「できること 04 GPU で MP4 に書き出す」の図（site/figs/export.mp4）。
+// 曲面 z = sin(x)cos(y) をカメラで 1 周し、下の帯で書き出しの進み具合を数える。
+
+const INK = "#d4d4d8", DIM = "#3a3a3f", SIGNAL = "#9cc3ff", FOG = "#9a9aa0";
+background("#0b0b0c");
+
+// 高さで暗い灰色 → 青へなめらかに変える
+const lo = [0x1c, 0x1d, 0x22], hi = [0x9c, 0xc3, 0xff];
+const shade = (s: number) => "#" + lo.map((c, i) => Math.round(c + (hi[i] - c) * Math.min(1, Math.max(0, s))).toString(16).padStart(2, "0")).join("");
+setCamera({ phi: 62 * DEGREES, theta: -60 * DEGREES, zoom: 0.95 });
+const f = (u: number, v: number): Vec3 => [u, v, 0.9 * Math.sin(u) * Math.cos(v)];
+surface(f, { u: [-3.2, 3.2], v: [-3.2, 3.2], resolution: 48, checkerboard: false, opacity: 0.9,
+  colorFn: (u, v, [, , z]) => shade((z + 0.9) / 1.8) });
+surfaceMesh(f, { u: [-3.2, 3.2], v: [-3.2, 3.2], resolution: 16, color: "#0b0b0c", width: 0.012, opacity: 0.7 });
+
+// 書き出しの帯（画面に固定）
+const D = 10;
+rect({ x: 0, y: -3.45, w: 12, h: 0.06, fill: "#232326", stroke: null });
+const t = tracker(0);
+always(() => rect({ x: -6 + 6 * t.value(), y: -3.45, w: 12 * t.value() + 0.001, h: 0.06, fill: SIGNAL, stroke: null }));
+always(() => text(`EXPORT  ${String(Math.round(t.value() * 600)).padStart(3, "0")} / 600  ·  1080p 60fps  ·  H.264`, { x: -2.4, y: -3.05, size: 0.26, color: FOG, font: "JetBrains Mono" }));
+
+play(orbit(TAU), t.set(1), { duration: D, ease: "linear" });
