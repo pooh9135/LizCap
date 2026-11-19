@@ -1,116 +1,62 @@
-/* 販売サイトのデザイントークン。計測の画面のような黒（参考: NORRVIK）。
-   ほぼ黒の地に白い文字と細い線。色は主ボタンの横の青と、映像の中の点だけ。
-   名前はもとにした black_Linear のまま（--color-void がページの地、--color-graphite が線）。 */
+/* 販売サイトのデザイントークン（参考: Graphite のスタイル資料 D:/Claudcode/UI/Lizcode）。
+   ほぼ黒の地に白い文字と 1px の線。角は 10px（ボタンは 8px）。
+   色を使うのは、文中のリンクと矢印のオレンジ、図の飾り線の「黄 → 白 → 青」の光だけ。主ボタンは明るい灰色。 */
 :root {
-  /* Colors */
-  --color-void: #0b0b0c;      /* ページの地 */
-  --color-carbon: #111113;    /* 面 */
-  --color-obsidian: #18181b;  /* 浮いた面 */
-  --color-graphite: #232326;  /* 1px の線 */
-  --color-smoke: #3a3a3f;     /* 強めの線・目盛り */
-  --color-ash: #6e6e74;
-  --color-fog: #9a9aa0;
-  --color-mist: #d4d4d8;
-  --color-bone: #ece8df;      /* 主ボタンの生成り */
-  --color-paper: #f4f4f5;
-  --color-signal: #9cc3ff;    /* 主ボタンの矢印・小さな印の青 */
-  --color-acid-lime: #e4f222;
-  --color-pulse-green: #27a644;
-  --color-coral-red: #eb5757;
-  --color-signal-teal: #02b8cc;
-  --color-iris-violet: #6366f1;
-  --color-lavender: #8b5cf6;
+  /* 色 */
+  --color-black: #000000;       /* 映像の奥・フェード */
+  --color-canvas: #0a0a0a;      /* ページの地・カードの中 */
+  --color-charcoal: #171717;    /* お知らせの帯・小さな操作 */
+  --color-edge: #262626;        /* 1px の線・2 番目のボタンの地 */
+  --color-steel: #464646;       /* 強めの線（選んだもの・映像の枠） */
+  --color-white: #fafafa;       /* 見出し・強い文字 */
+  --color-paper: #e5e5e5;       /* 主ボタンの地 */
+  --color-fog: #a1a1a1;         /* 本文の 2 番目・ナビ */
+  --color-ash: #737373;         /* 3 番目のラベル */
+  --color-orange: #ff8833;      /* 文中のリンクと小さな矢印だけ */
+  --color-solar: #ffb931;
+  --color-blue: #2e73fc;
+  --gradient-solar: linear-gradient(90deg, #ffb931 15%, #ffffff 30%, #ffffff 40%, #2e73fc 50%);
 
-  /* Typography — Font Families */
-  --font-inter-variable: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-berkeley-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* 文字 */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', 'Yu Gothic UI', 'Hiragino Sans', 'Zen Kaku Gothic New', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --text-caption: 12px;
+  --text-control: 14px;
+  --text-body: 16px;
+  --text-body-lg: 18px;
+  --text-sub: 20px;
+  --text-feature: 24px;
+  --text-section: 36px;
+  --text-display: 60px;
 
-  /* Typography — Scale */
-  --text-caption: 13px;
-  --leading-caption: 1.2;
-  --text-body-sm: 15px;
-  --leading-body-sm: 1.6;
-  --tracking-body-sm: -0.165px;
-  --text-body-lg: 20px;
-  --leading-body-lg: 1.33;
-  --tracking-body-lg: -0.24px;
-  --text-subheading: 24px;
-  --leading-subheading: 1.33;
-  --tracking-subheading: -0.288px;
-  --text-heading-sm: 32px;
-  --leading-heading-sm: 1.13;
-  --tracking-heading-sm: -0.704px;
-  --text-heading: 48px;
-  --leading-heading: 1;
-  --tracking-heading: -1.056px;
-  --text-heading-lg: 64px;
-  --leading-heading-lg: 1;
-  --tracking-heading-lg: -1.408px;
-  --text-display: 72px;
-  --leading-display: 1;
-  --tracking-display: -1.584px;
-
-  /* Typography — Weights */
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-w510: 510;
-  --font-weight-w590: 590;
-
-  /* Spacing */
-  --spacing-unit: 4px;
-  --spacing-4: 4px;
+  /* 間隔（8px 刻み） */
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
-  --spacing-20: 20px;
   --spacing-24: 24px;
-  --spacing-28: 28px;
   --spacing-32: 32px;
-  --spacing-36: 36px;
-  --spacing-40: 40px;
   --spacing-48: 48px;
-  --spacing-56: 56px;
   --spacing-64: 64px;
-  --spacing-80: 80px;
-  --spacing-96: 96px;
+  --spacing-72: 72px;
   --spacing-128: 128px;
 
-  /* Layout */
-  --page-max-width: 1200px;
-  --section-gap: 96px;
-  --card-padding: 24px;
-  --element-gap: 8px;
+  /* 配置 */
+  --page-max-width: 1152px;
+  --section-gap: 160px;
 
-  /* Border Radius */
-  --radius-sm: 2px;
-  --radius-md: 6px;
-  --radius-xl: 12px;
-  --radius-2xl: 16px;
-  --radius-2xl-2: 22px;
-  --radius-full: 400px;
-  --radius-full-2: 9999px;
+  /* 角 */
+  --radius-tab: 4px;
+  --radius-button: 8px;
+  --radius-card: 10px;
+  --radius-pill: 9999px;
 
-  /* Named Radii */
-  --radius-cards: 12px;
-  --radius-pills: 9999px;
-  --radius-small: 2px;
-  --radius-badges: 4px;
-  --radius-inputs: 6px;
-  --radius-buttons: 6px;
+  /* 影 */
+  --shadow-nav: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+  --shadow-frame: rgba(101, 129, 128, 0.15) 0px 0px 2px 2px inset, rgba(32, 47, 46, 0.15) 0px 0px 4px 4px inset;
+  --shadow-button: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  --shadow-primary: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.1) 0px -2px 6px 0px inset;
+  --shadow-card: rgba(0, 0, 0, 0.3) 0px 8px 10px 0px;
 
-  /* Shadows */
-  --shadow-sm: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px;
-  --shadow-md: rgba(0, 0, 0, 0.2) 0px 0px 12px 0px inset;
-  --shadow-subtle: rgb(35, 37, 42) 0px 0px 0px 1px inset;
-  --shadow-subtle-2: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
-  --shadow-subtle-3: rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
-  --shadow-xl: rgba(8, 9, 10, 0.6) 0px 4px 32px 0px;
-  --shadow-subtle-4: rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px;
-  --shadow-subtle-5: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
-
-  /* Surfaces */
-  --surface-void: #141414;
-  --surface-carbon: #181818;
-  --surface-obsidian: #1f1f1f;
-  --surface-slate: #2b2b2b;
+  --line: 1px solid var(--color-edge);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
 }

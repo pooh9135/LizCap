@@ -1,66 +1,61 @@
-/* 販売サイトの部品。計測の画面のような見た目（参考: NORRVIK）：
-   - ほぼ黒の地に 1px の細い線。角は丸めない。面はほとんど塗らない
-   - 見出しは Inter の中くらいの太さで詰める。2 行目は灰色にする
-   - 小さなラベルは等幅の大文字で字間を空ける（FIG. 01 / … のような図の番号）
-   - 主ボタンは生成りの地に等幅の大文字、右に青い矢印の箱。1 画面に 1 つ */
-
-:root {
-  --font-sans: 'Inter', system-ui, 'Segoe UI', 'Yu Gothic UI', 'Hiragino Sans', 'Zen Kaku Gothic New', sans-serif;
-  --font-serif: var(--font-sans);
-  --font-mono: 'JetBrains Mono', 'Zen Kaku Gothic New', ui-monospace, SFMono-Regular, Consolas, monospace;
-  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 150ms;
-  --radius-frame: 0px;
-  --line: 1px solid var(--color-graphite);
-}
+/* 販売サイトの部品（参考: Graphite）：
+   - 地は #0a0a0a、面は 1px の #262626 の線で区切る。カードと映像の枠は角 10px
+   - 見出しは Inter 500 で詰める（一番上は 60px / 行の高さ 1 / 字間 -1.5px）
+   - 主ボタンは明るい灰色、2 番目は #262626。色の付いた塗りのボタンは使わない
+   - オレンジは文中のリンクと矢印だけ */
 
 /* ---- 土台 ---- */
-html, body { background: var(--color-void); color: var(--color-mist); }
+html, body { background: var(--color-canvas); color: var(--color-fog); }
 body {
-  margin: 0; font-family: var(--font-sans); font-size: 16px; line-height: 1.5;
-  font-feature-settings: "cv01", "ss03", "zero", "palt";
+  margin: 0; font-family: var(--font-sans); font-size: var(--text-body); line-height: 1.5;
+  font-feature-settings: "clig" 0, "liga" 0, "palt";
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 h1, h2, h3, p { word-break: auto-phrase; text-wrap: pretty; }   /* 日本語を文節の切れ目で折り返す */
-::selection { background: var(--color-signal); color: var(--color-void); }
+::selection { background: var(--color-white); color: var(--color-canvas); }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb { background: var(--color-smoke); border: 3px solid var(--color-void); }
-*::-webkit-scrollbar-track { background: var(--color-void); }
+*::-webkit-scrollbar-thumb { background: var(--color-edge); border: 3px solid var(--color-canvas); border-radius: 10px; }
+*::-webkit-scrollbar-track { background: var(--color-canvas); }
+code { font-family: var(--font-mono); font-size: 0.88em; color: var(--color-white); background: var(--color-charcoal);
+       border: var(--line); border-radius: var(--radius-tab); padding: 1px 5px; }
 
 /* ---- 文字 ---- */
-.display, .headline { font-family: var(--font-sans); font-weight: 500; color: var(--color-paper); font-feature-settings: "palt"; }
-.display  { font-size: var(--text-heading-lg); line-height: 1.08; letter-spacing: -0.035em; }
-.headline { font-size: 40px; line-height: 1.2; letter-spacing: -0.025em; }
-.display .dim, .headline .dim { color: var(--color-ash); }   /* 2 行目を灰色に */
-.mono     { font-family: var(--font-mono); letter-spacing: -0.013em; }
-/* 図の番号のような小さなラベル（(02) FEATURES / …） */
-.eyebrow, .hud { font-family: var(--font-mono); font-size: 11px; line-height: 1.6; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fog); }
-.eyebrow .no { color: var(--color-signal); }
+.display, .headline, .feature-title { color: var(--color-white); font-weight: 500; margin: 0; }
+.display  { font-size: var(--text-display); line-height: 1.04; letter-spacing: -1.5px; }
+.headline { font-size: var(--text-section); line-height: 1.15; letter-spacing: -0.6px; }
+.feature-title { font-size: var(--text-feature); line-height: 1.25; font-weight: 600; letter-spacing: -0.3px; }
+.muted { color: var(--color-ash); }
+/* 小さなラベル（丸い枠の中の 12px） */
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; box-sizing: border-box;
+        border: var(--line); border-radius: var(--radius-pill); color: var(--color-fog); font-size: var(--text-caption); line-height: 1; }
+.chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-orange); }
+
+/* ---- リンク（オレンジ + 小さな矢印） ---- */
+.link { color: var(--color-orange); text-decoration: none; font-size: var(--text-body); line-height: 20px; display: inline-flex; align-items: center; gap: 6px; }
+.link::after { content: "→"; transition: transform 150ms ease-out; }
+.link:hover::after { transform: translateX(3px); }
 
 /* ---- ボタン ---- */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 16px; height: 40px; box-sizing: border-box;
-       border: 1px solid var(--color-smoke); border-radius: 0; background: transparent; color: var(--color-paper);
-       font: 400 12px/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer;
-       transition: border-color var(--dur-fast) ease-out, background-color var(--dur-fast) ease-out, color var(--dur-fast) ease-out; }
-.btn:hover { border-color: var(--color-fog); background: var(--color-carbon); }
-.btn:focus-visible { outline: 1px solid var(--color-signal); outline-offset: 2px; }
-/* 主ボタン: 生成りの地 + 右に青い矢印の箱 */
-.btn-primary { border: 0; padding: 0; gap: 0; background: var(--color-bone); color: #111; }
-.btn-primary .label { padding: 0 20px; color: inherit; font-size: 12px; letter-spacing: 0.04em; }
-.btn-primary::after { content: "→"; display: grid; place-items: center; width: 40px; height: 40px; background: var(--color-signal); color: #0b0b0c;
-                      font-family: var(--font-sans); font-size: 15px; transition: transform var(--dur-fast) ease-out; }
-.btn-primary:hover { background: #fff; }
-/* 文字だけのリンク（EXPLORE A LIVE MODEL ↗ のような下線つき） */
-.btn-ghost { border: 0; height: auto; padding: 6px 0; border-bottom: 1px solid var(--color-smoke); }
-.btn-ghost::after { content: "↗"; font-family: var(--font-sans); transition: transform var(--dur-fast) ease-out; }
-.btn-ghost:hover { background: transparent; border-color: var(--color-paper); }
-.btn-ghost:hover::after { transform: translate(2px, -2px); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 16px; box-sizing: border-box;
+       border-radius: var(--radius-button); font: 500 var(--text-control)/20px var(--font-sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+       border: 1px solid var(--color-steel); background: var(--color-edge); color: var(--color-white); box-shadow: var(--shadow-button);
+       transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out; }
+.btn:hover { background: #303030; }
+.btn:focus-visible { outline: 2px solid var(--color-ash); outline-offset: 2px; }
+.btn-primary { background: var(--color-paper); color: var(--color-charcoal); border-color: rgba(255, 255, 255, 0.1); box-shadow: var(--shadow-primary); }
+.btn-primary:hover { background: #ffffff; }
+.btn-ghost { background: transparent; color: var(--color-fog); border-color: rgba(255, 255, 255, 0.1); box-shadow: none; }
+.btn-ghost:hover { background: var(--color-charcoal); color: var(--color-white); }
+.btn-lg { height: 44px; padding: 0 20px; font-size: 15px; }
+
+/* ---- カード ---- */
+.card { background: var(--color-canvas); border: var(--line); border-radius: var(--radius-card); overflow: hidden; }
 
 /* ---- 出てくるときの動き ---- */
-.enter   { animation: ln-enter 420ms var(--ease-enter) both; }
-.enter-2 { animation: ln-enter 520ms var(--ease-enter) 60ms both; }
-.enter-3 { animation: ln-enter 620ms var(--ease-enter) 120ms both; }
-@keyframes ln-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.enter   { animation: ln-enter 520ms var(--ease-enter) both; }
+.enter-2 { animation: ln-enter 620ms var(--ease-enter) 80ms both; }
+.enter-3 { animation: ln-enter 720ms var(--ease-enter) 160ms both; }
+@keyframes ln-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .enter, .enter-2, .enter-3 { animation: none; }
