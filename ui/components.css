@@ -1,6 +1,6 @@
 /* 販売サイトの部品（参考: linear.app + cursor.com）：
    - 地はほぼ黒、面は 1px の線と少し明るい地で分ける
-   - 見出しは Inter 510 で大きく詰める。文は「白い 1 文 + 灰色の続き」の 2 色
+   - 見出しは Inter 500 で大きく詰める。文は「白い 1 文 + 灰色の続き」の 2 色
    - ボタンは丸く、主ボタンは明るい灰色、2 番目は暗い地に線
    - 色は文中のリンクのオレンジだけ */
 
@@ -20,9 +20,9 @@ code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-text
        border: var(--line); border-radius: 4px; padding: 1px 5px; }
 
 /* ---- 文字 ---- */
-.display { margin: 0; color: var(--color-text); font-weight: 510; font-size: 64px; line-height: 1.06; letter-spacing: -0.022em; }
-.headline { margin: 0; color: var(--color-text); font-weight: 510; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; }
-.title { margin: 0; color: var(--color-text); font-weight: 510; font-size: 20px; line-height: 1.35; letter-spacing: -0.01em; }
+.display { margin: 0; color: var(--color-text); font-weight: 500; font-size: 64px; line-height: 1.06; letter-spacing: -0.022em; }
+.headline { margin: 0; color: var(--color-text); font-weight: 500; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; }
+.title { margin: 0; color: var(--color-text); font-weight: 500; font-size: 20px; line-height: 1.35; letter-spacing: -0.01em; }
 /* 白い 1 文 + 灰色の続き（linear.app の宣言文、cursor.com のカードの文） */
 .two-tone { color: var(--color-muted); }
 .two-tone b { color: var(--color-text); font-weight: inherit; }

@@ -43,14 +43,14 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 .window img { display: block; width: 100%; height: auto; }
 
 /* ---- 宣言（白い 1 文 + 灰色の続き。linear.app） ---- */
-.statement > p { margin: 0; max-width: 1000px; font-size: 34px; line-height: 1.3; letter-spacing: -0.018em; font-weight: 510; }
+.statement > p { margin: 0; max-width: 1000px; font-size: 34px; line-height: 1.3; letter-spacing: -0.018em; font-weight: 500; }
 
 /* ---- 線画の図 3 つ（縦の線で区切る。linear.app の FIG） ---- */
 .figs { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--spacing-96); border-top: var(--line); }
 .figs > div { padding: var(--spacing-24) var(--spacing-32) 0; border-left: var(--line); }
 .figs > div:first-child { border-left: 0; padding-left: 0; }
 .figs img { display: block; width: 100%; max-width: 300px; height: auto; margin: var(--spacing-24) auto var(--spacing-32); }
-.figs h3 { margin: 0 0 6px; color: var(--color-text); font-size: 15px; font-weight: 510; }
+.figs h3 { margin: 0 0 6px; color: var(--color-text); font-size: 15px; font-weight: 500; }
 .figs p { margin: 0; font-size: 15px; line-height: 1.6; }
 
 /* ---- できること: 文と映像を左右に置いたカード（cursor.com） ---- */
@@ -70,7 +70,7 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: var(--line); border-bottom: var(--line); }
 .stat { padding: var(--spacing-32); border-left: var(--line); display: flex; flex-direction: column; gap: var(--spacing-16); }
 .stat:first-child { border-left: 0; padding-left: 0; }
-.stat .figure { color: var(--color-text); font-size: 56px; font-weight: 510; letter-spacing: -0.03em; line-height: 1; }
+.stat .figure { color: var(--color-text); font-size: 56px; font-weight: 500; letter-spacing: -0.03em; line-height: 1; }
 .stat .figure small { font-size: 20px; color: var(--color-muted); margin-left: 4px; letter-spacing: 0; }
 .stat .what { color: var(--color-text-2); font-size: 15px; }
 .stat dl { display: grid; grid-template-columns: 1fr auto; margin: 0; font-size: 13px; }
@@ -87,8 +87,8 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 /* ---- 料金 ---- */
 .prices { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-16); }
 .price { display: flex; flex-direction: column; gap: var(--spacing-16); padding: var(--spacing-32); background: var(--color-panel); border: var(--line); border-radius: var(--radius-card); }
-.price .name { color: var(--color-text); font-weight: 510; }
-.price .amount { color: var(--color-text); font-size: 48px; font-weight: 510; letter-spacing: -0.03em; line-height: 1; }
+.price .name { color: var(--color-text); font-weight: 500; }
+.price .amount { color: var(--color-text); font-size: 48px; font-weight: 500; letter-spacing: -0.03em; line-height: 1; }
 .price .amount small { font-size: 14px; color: var(--color-muted); margin-left: 6px; letter-spacing: 0; font-weight: 400; }
 .price ul { margin: 0 0 var(--spacing-8); padding: 0; list-style: none; display: grid; gap: 10px; font-size: 15px; color: var(--color-text-2); }
 .price li { position: relative; padding-left: 22px; line-height: 1.55; }
@@ -102,7 +102,7 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 .faq { border-top: var(--line); }
 .faq details { border-bottom: var(--line); }
 .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-16);
-               padding: 20px 0; color: var(--color-text); font-weight: 510; }
+               padding: 20px 0; color: var(--color-text); font-weight: 500; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; color: var(--color-faint); font-size: 20px; line-height: 1; transition: transform 200ms ease-out; }
 .faq details[open] summary::after { transform: rotate(45deg); }
@@ -125,9 +125,9 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 /* ---- 規約などの文書ページ ---- */
 .doc { max-width: 760px; padding: var(--spacing-96) 0 0; }
 .doc .eyebrow { font: 400 11px/1.4 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-faint); }
-.doc h1 { font: 510 48px/1.12 var(--font-sans); letter-spacing: -0.022em; color: var(--color-text); margin: var(--spacing-16) 0 var(--spacing-8); }
+.doc h1 { font: 500 48px/1.12 var(--font-sans); letter-spacing: -0.022em; color: var(--color-text); margin: var(--spacing-16) 0 var(--spacing-8); }
 .doc .updated { color: var(--color-faint); font-size: 13px; margin: 0 0 var(--spacing-48); padding-bottom: var(--spacing-24); border-bottom: var(--line); }
-.doc h2 { font-size: 18px; line-height: 1.4; font-weight: 510; color: var(--color-text); margin: var(--spacing-48) 0 var(--spacing-12); }
+.doc h2 { font-size: 18px; line-height: 1.4; font-weight: 500; color: var(--color-text); margin: var(--spacing-48) 0 var(--spacing-12); }
 .doc p, .doc li { color: var(--color-text-2); font-size: 15px; line-height: 1.85; }
 .doc ul, .doc ol { padding-left: 1.4em; }
 .doc a { color: var(--color-link); text-decoration: none; }

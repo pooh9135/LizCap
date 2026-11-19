@@ -16,7 +16,7 @@
   --color-link: #f2733d;        /* 文中のリンク */
 
   /* 文字 */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', 'Yu Gothic UI', 'Hiragino Sans', 'Zen Kaku Gothic New', sans-serif;
+  --font-sans: 'Inter', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;   /* 英字は Inter、日本語は Zen Kaku Gothic New */
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
 
   /* 間隔 */
