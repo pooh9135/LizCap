@@ -14,7 +14,7 @@ code { font: 400 0.88em var(--font-mono); color: var(--color-text); background: 
 .lead { font-size: 18px; line-height: 1.75; margin: 0; }
 
 /* 小さな見出し札 */
-.tag { display: inline-block; margin-bottom: var(--spacing-24); padding: 3px 10px; border: var(--line); border-radius: var(--radius-badge); font-size: 12px; line-height: 1.33; color: var(--color-fog); }
+.tag { display: block; margin-bottom: var(--spacing-16); font-size: 13px; line-height: 1.33; color: var(--color-ash); }
 
 /* 文中のリンクだけオレンジ */
 .link { color: var(--color-link); text-decoration: none; }
@@ -39,15 +39,9 @@ code { font: 400 0.88em var(--font-mono); color: var(--color-text); background: 
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
 .reveal.in { opacity: 1; transform: none; }
 
-/* 浮かぶ立体 */
-@keyframes bob { from { transform: translateY(-6px); } to { transform: translateY(8px); } }
-canvas.shape { pointer-events: none; animation: bob 5s ease-in-out infinite alternate; filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.07)); }
-canvas.shape.slow { animation-duration: 7s; }
-canvas.shape.no-gl { visibility: hidden; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .enter, .enter-2, .enter-3, canvas.shape { animation: none; }
+  .enter, .enter-2, .enter-3 { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn { transition: none; }
 }
