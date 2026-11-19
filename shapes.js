@@ -1,5 +1,6 @@
 // 数学の立体（結び目・メビウスの帯・トーラスなど）を WebGL で描く。
-// <canvas class="shape" data-shape="knot" data-a="#ff6b3d" data-b="#ffd36b"> を探して回す。
+// 黒い体に、式の u・v の線（格子）を光らせ、その上を光が 1 周ずつ走る（play(create(…)) の見立て）。
+// <canvas class="shape" data-shape="knot" data-a="線の色" data-b="走る光の色"> を探して回す。
 // WebGL の文脈は 1 つだけ作り、描いた絵をそれぞれの canvas に写す。
 (() => {
   const TAU = Math.PI * 2;
@@ -29,80 +30,91 @@
     knot: [tube((u) => {
       const t = u * TAU, r = 1 + 0.42 * Math.cos(3 * t);
       return [r * Math.cos(2 * t), r * Math.sin(2 * t), 0.42 * Math.sin(3 * t) * 1.5];
-    }, 0.27), 260, 22],
+    }, 0.27), 260, 22, [54, 8]],
     torus: [(u, v) => {
       const a = u * TAU, b = v * TAU, r = 1 + 0.42 * Math.cos(b);
       return [r * Math.cos(a), 0.42 * Math.sin(b), r * Math.sin(a)];
-    }, 72, 32],
+    }, 72, 32, [30, 12]],
     // メビウスの帯
     mobius: [(u, v) => {
       const a = u * TAU, w = (v - 0.5) * 0.95, r = 1 + w * Math.cos(a / 2);
       return [r * Math.cos(a), w * Math.sin(a / 2), r * Math.sin(a)];
-    }, 120, 14],
+    }, 120, 14, [40, 6]],
     // 球面調和関数のような、でこぼこの球
     blob: [(u, v) => {
       const a = u * TAU, b = v * Math.PI;
       const r = 1 + 0.2 * Math.sin(3 * a) * Math.sin(b) * Math.sin(b) * Math.cos(2 * b) + 0.1 * Math.cos(4 * b);
       return [r * Math.sin(b) * Math.cos(a), r * Math.cos(b), r * Math.sin(b) * Math.sin(a)];
-    }, 96, 64],
+    }, 96, 64, [24, 14]],
     // ばね（らせんの管。両端は丸める）
     spring: [tube((u) => {
       const t = u * TAU * 3.5;
       return [0.62 * Math.cos(t), (u - 0.5) * 2.1, 0.62 * Math.sin(t)];
-    }, (u) => 0.2 * Math.sqrt(Math.max(0, 1 - Math.pow(Math.abs(2 * u - 1), 16)))), 260, 18],
+    }, (u) => 0.2 * Math.sqrt(Math.max(0, 1 - Math.pow(Math.abs(2 * u - 1), 16)))), 260, 18, [70, 6]],
     // 波紋: y = cos(ρ) の円板
     wave: [(u, v) => {
       const rho = u * 1.25, a = v * TAU;
       return [rho * Math.cos(a), 0.2 * Math.cos(rho * 8.5) * (1 - u * 0.45), rho * Math.sin(a)];
-    }, 72, 72],
+    }, 72, 72, [9, 28]],
   };
 
-  function build([fn, nu, nv]) {
-    const pos = [], nor = [], idx = [], e = 1e-3;
+  function build([fn, nu, nv, grid]) {
+    const pos = [], nor = [], uv = [], idx = [], e = 1e-3;
     let rad = 0;
     for (let i = 0; i <= nu; i++) for (let j = 0; j <= nv; j++) {
       const u = i / nu, v = j / nv, p = fn(u, v);
       let n = cross(sub(fn(u + e, v), fn(u - e, v)), sub(fn(u, v + e), fn(u, v - e)));
       if (!(len(n) > 1e-12)) n = len(p) > 1e-9 ? p : [0, 1, 0];
       n = norm(n);
-      pos.push(p[0], p[1], p[2]); nor.push(n[0], n[1], n[2]);
+      pos.push(p[0], p[1], p[2]); nor.push(n[0], n[1], n[2]); uv.push(u, v);
       rad = Math.max(rad, len(p));
     }
     for (let i = 0; i < nu; i++) for (let j = 0; j < nv; j++) {
       const a = i * (nv + 1) + j, b = a + nv + 1;
       idx.push(a, b, a + 1, b, b + 1, a + 1);
     }
-    return { pos: new Float32Array(pos.map((x) => x / rad)), nor: new Float32Array(nor), idx: new Uint16Array(idx) };
+    return { pos: new Float32Array(pos.map((x) => x / rad)), nor: new Float32Array(nor), uv: new Float32Array(uv), idx: new Uint16Array(idx), grid };
   }
 
   const glc = document.createElement("canvas");
   const gl = glc.getContext("webgl", { alpha: true, antialias: true, premultipliedAlpha: true });
   if (!gl) { els.forEach((c) => c.classList.add("no-gl")); return; }
 
+  const deriv = !!gl.getExtension("OES_standard_derivatives");
   const VS = `
-    attribute vec3 aPos; attribute vec3 aNor;
+    attribute vec3 aPos; attribute vec3 aNor; attribute vec2 aUV;
     uniform mat3 uR; uniform float uAspect;
-    varying vec3 vN; varying vec3 vP;
+    varying vec3 vN; varying vec3 vP; varying vec2 vUV;
     void main() {
-      vec3 p = uR * aPos; vN = uR * aNor; vP = p;
+      vec3 p = uR * aPos; vN = uR * aNor; vP = p; vUV = aUV;
       float w = 6.0 - p.z;
       gl_Position = vec4(p.x * 4.3 / uAspect, p.y * 4.3, (21.0 * w - 40.0) / 19.0, w);
     }`;
-  const FS = `
-    precision mediump float;
-    uniform vec3 uA; uniform vec3 uB;
-    varying vec3 vN; varying vec3 vP;
+  const FS = `${deriv ? "#extension GL_OES_standard_derivatives : enable" : ""}
+    precision highp float;
+    uniform vec3 uA; uniform vec3 uB; uniform vec2 uGrid; uniform float uT;
+    varying vec3 vN; varying vec3 vP; varying vec2 vUV;
     void main() {
       vec3 n = normalize(vN);
       vec3 v = normalize(vec3(0.0, 0.0, 6.0) - vP);
       if (dot(n, v) < 0.0) n = -n;
       vec3 l = normalize(vec3(-0.55, 0.8, 0.6));
-      float d = smoothstep(0.12, 0.95, dot(n, l) * 0.5 + 0.5);
-      vec3 shade = mix(uA * 0.42, vec3(0.17, 0.12, 0.46), 0.42);
-      vec3 col = mix(shade, uA, d);
-      col = mix(col, uB, pow(1.0 - max(dot(n, v), 0.0), 2.2) * 0.75);
-      col += vec3(1.0) * pow(max(dot(n, normalize(l + v)), 0.0), 56.0) * 0.5;
-      col += vec3(0.07) * max(n.y, 0.0);
+      float d = smoothstep(0.1, 0.95, dot(n, l) * 0.5 + 0.5);
+      float rim = pow(1.0 - max(dot(n, v), 0.0), 3.0);
+      // 体: ほぼ黒。ふちだけ白く光る
+      vec3 col = vec3(0.03) + vec3(0.085) * d + vec3(0.42) * rim;
+      col += vec3(1.0) * pow(max(dot(n, normalize(l + v)), 0.0), 60.0) * 0.16;
+      // 格子線
+      vec2 g = vUV * uGrid;
+      vec2 f = abs(fract(g - 0.5) - 0.5);
+      ${deriv ? "f /= fwidth(g); float line = 1.0 - smoothstep(0.55, 1.5, min(f.x, f.y));"
+              : "float line = 1.0 - smoothstep(0.03, 0.07, min(f.x, f.y));"}
+      // 走る光: u に沿って頭が明るく、後ろへ尾を引く
+      float s = fract(uT - vUV.x);
+      float band = pow(1.0 - s, 7.0);
+      vec3 lc = uA * (0.2 + 0.45 * d) + mix(uB, vec3(1.0), band * band) * band * 1.25;
+      col = mix(col, lc, line);
+      col += uB * band * 0.07;
       gl_FragColor = vec4(col, 1.0);
     }`;
   const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
@@ -117,21 +129,22 @@
     pos: gl.getAttribLocation(prog, "aPos"), nor: gl.getAttribLocation(prog, "aNor"),
     R: gl.getUniformLocation(prog, "uR"), aspect: gl.getUniformLocation(prog, "uAspect"),
     A: gl.getUniformLocation(prog, "uA"), B: gl.getUniformLocation(prog, "uB"),
+    uv: gl.getAttribLocation(prog, "aUV"), grid: gl.getUniformLocation(prog, "uGrid"), T: gl.getUniformLocation(prog, "uT"),
   };
-  gl.enableVertexAttribArray(loc.pos); gl.enableVertexAttribArray(loc.nor);
+  gl.enableVertexAttribArray(loc.pos); gl.enableVertexAttribArray(loc.nor); gl.enableVertexAttribArray(loc.uv);
 
   const meshes = {};
   function mesh(name) {
     if (meshes[name]) return meshes[name];
     const m = build(SURFACES[name] || SURFACES.torus);
     const buf = (target, data) => { const b = gl.createBuffer(); gl.bindBuffer(target, b); gl.bufferData(target, data, gl.STATIC_DRAW); return b; };
-    return (meshes[name] = { pos: buf(gl.ARRAY_BUFFER, m.pos), nor: buf(gl.ARRAY_BUFFER, m.nor), idx: buf(gl.ELEMENT_ARRAY_BUFFER, m.idx), count: m.idx.length });
+    return (meshes[name] = { pos: buf(gl.ARRAY_BUFFER, m.pos), nor: buf(gl.ARRAY_BUFFER, m.nor), uv: buf(gl.ARRAY_BUFFER, m.uv), grid: m.grid, idx: buf(gl.ELEMENT_ARRAY_BUFFER, m.idx), count: m.idx.length });
   }
 
   const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
   const items = els.map((el, i) => ({
     el, ctx: el.getContext("2d"), name: el.dataset.shape,
-    a: rgb(el.dataset.a || "#ff6b3d"), b: rgb(el.dataset.b || "#ffffff"),
+    a: rgb(el.dataset.a || "#e5e5e5"), b: rgb(el.dataset.b || "#ff8833"),
     spin: parseFloat(el.dataset.spin || "0.35"), tilt: parseFloat(el.dataset.tilt || "0.5"),
     roll: parseFloat(el.dataset.roll || "0.2"), phase: i * 1.7, on: false, drawn: false,
   }));
@@ -162,6 +175,9 @@
     gl.uniform3fv(loc.A, it.a); gl.uniform3fv(loc.B, it.b);
     gl.bindBuffer(gl.ARRAY_BUFFER, m.pos); gl.vertexAttribPointer(loc.pos, 3, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, m.nor); gl.vertexAttribPointer(loc.nor, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, m.uv); gl.vertexAttribPointer(loc.uv, 2, gl.FLOAT, false, 0, 0);
+    gl.uniform2fv(loc.grid, m.grid);
+    gl.uniform1f(loc.T, reduce ? 0.35 : time * 0.16 + it.phase * 0.13);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, m.idx);
     gl.drawElements(gl.TRIANGLES, m.count, gl.UNSIGNED_SHORT, 0);
     it.ctx.clearRect(0, 0, w, h);

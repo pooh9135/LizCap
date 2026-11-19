@@ -1,51 +1,41 @@
-/* Liz CAP の販売サイトの色・字・間隔（2026-11-19: 濃い紺の地 + 太い見出し + 色つきの大きなカード + 数学の立体） */
+/* Liz CAP の販売サイトの色・字・間隔。
+   D:/Claudcode/UI/Lizcode の Graphite（ほぼ黒の地・細い線・白い字・色はリンクのオレンジだけ）に沿う（2026-11-19）。
+   独自の部分は数学の立体（shapes.js）: 線の色 --color-cloud、走る光は --color-link と --color-ice */
 :root {
-  --color-bg: #0a0b1e;
-  --color-bg-deep: #06071a;
-  --color-panel: #14163a;
-  --color-raised: #1c1f4d;
-  --color-line: rgba(255, 255, 255, 0.1);
-  --color-text: #ffffff;
-  --color-text-2: #c3c6e6;
-  --color-muted: #9195bd;
-  --color-ink: #0a0b1e;
+  --color-bg: #0a0a0a;
+  --color-black: #000000;
+  --color-surface: #171717;
+  --color-edge: #262626;
+  --color-steel: #464646;
+  --color-text: #fafafa;
+  --color-paper: #e5e5e5;
+  --color-fog: #a1a1a1;
+  --color-ash: #737373;
+  --color-link: #ff8833;
+  --color-ice: #6ea8ff;
 
-  /* 主ボタンと立体の色 */
-  --color-coral: #ff6b3d;
-  --color-coral-hi: #ff8a63;
-  --color-violet: #7c5cff;
-  --color-sky: #38b6ff;
-  --color-pink: #ff5fa2;
-  --color-sun: #ffc53d;
-  --color-mint: #2ed3a0;
-
-  /* できることのカード（1 枚ごとに別の色） */
-  --grad-violet: linear-gradient(135deg, #5a39e6 0%, #9a4bf0 100%);
-  --grad-blue: linear-gradient(135deg, #1b5fd9 0%, #2a9fe8 100%);
-  --grad-pink: linear-gradient(135deg, #b82a78 0%, #ec5578 100%);
-  --grad-green: linear-gradient(135deg, #0a7659 0%, #17a276 100%);
-
-  --font-display: 'Unbounded', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;
   --font-sans: 'Inter', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
 
-  --spacing-4: 4px;
   --spacing-8: 8px;
-  --spacing-12: 12px;
   --spacing-16: 16px;
-  --spacing-20: 20px;
   --spacing-24: 24px;
   --spacing-32: 32px;
-  --spacing-40: 40px;
   --spacing-48: 48px;
   --spacing-56: 56px;
-  --spacing-80: 80px;
-  --spacing-112: 112px;
-  --section-gap: 136px;
-  --page-max: 1200px;
+  --spacing-64: 64px;
+  --spacing-72: 72px;
+  --spacing-128: 128px;
+  --section-gap: 176px;
+  --page-max: 1152px;
 
-  --radius-btn: 12px;
-  --radius-card: 16px;
-  --radius-panel: 32px;
-  --radius-pill: 104px;
+  --radius-btn: 8px;
+  --radius-card: 10px;
+  --radius-badge: 20px;
+  --radius-pill: 9999px;
+
+  --line: 1px solid var(--color-edge);
+  --shadow-frame: rgba(101, 129, 128, 0.15) 0 0 2px 2px inset, rgba(32, 47, 46, 0.15) 0 0 4px 4px inset;
+  --shadow-pale: rgb(255, 255, 255) 0 1px 0 0 inset, rgba(0, 0, 0, 0.1) 0 -2px 6px 0 inset;
+  --shadow-sm: rgba(0, 0, 0, 0.25) 0 4px 4px 0;
 }

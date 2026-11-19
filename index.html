@@ -8,12 +8,13 @@
   <link rel="icon" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400&family=Unbounded:wght@800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="ui/tokens.css">
   <link rel="stylesheet" href="ui/components.css">
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
+  <a class="announce" href="https://github.com/pooh9135/lizcap/releases/latest"><b>Liz CAP 0.1.1 を公開しました</b><span>ダウンロード →</span></a>
   <header class="top">
     <div class="wrap">
       <a class="brand" href="./"><img src="icon.png" alt="">Liz CAP</a>
@@ -23,8 +24,8 @@
         <a href="#faq">質問</a>
       </nav>
       <div class="actions">
-        <a class="btn btn-sm" href="#pricing">有料版</a>
-        <a class="btn btn-sm btn-white" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
+        <a class="btn btn-sm btn-ghost" href="#pricing">有料版</a>
+        <a class="btn btn-sm btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
       </div>
     </div>
   </header>
@@ -33,26 +34,25 @@
     <div class="hero" id="top">
       <div class="wrap hero-grid">
         <div class="hero-text">
-          <a class="new enter" href="https://github.com/pooh9135/lizcap/releases/latest"><b>NEW</b>0.1.1 を公開しました →</a>
           <h1 class="display enter">数式を、<br>書いた瞬間に<br>動く図に。</h1>
           <p class="lead enter-2">TypeScript でシーンを書くと、横のプレビューにすぐ映ります。図形をつかめばコードが変わり、AI に頼めばコードごと直ります。</p>
           <div class="actions enter-3">
             <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード ↓</a>
-            <a class="btn btn-white" href="#features">できることを見る</a>
+            <a class="btn btn-secondary" href="#features">できることを見る</a>
           </div>
           <p class="small enter-3">無料で始められます。Windows 10 / 11（64 ビット）。</p>
         </div>
         <div class="hero-art enter-2">
-          <canvas class="shape s-main slow" data-shape="knot" data-a="#ff6b3d" data-b="#ffd36b" data-spin="0.28" data-tilt="1.15" data-roll="0.25" aria-hidden="true"></canvas>
-          <canvas class="shape s-a" data-shape="blob" data-a="#7c5cff" data-b="#c9bcff" data-spin="0.5" aria-hidden="true"></canvas>
-          <canvas class="shape s-b" data-shape="spring" data-a="#2ed3a0" data-b="#d6fff1" data-spin="0.6" data-tilt="0.3" data-roll="0.5" aria-hidden="true"></canvas>
+          <canvas class="shape s-main slow" data-shape="knot" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.28" data-tilt="1.15" data-roll="0.25" aria-hidden="true"></canvas>
+          <canvas class="shape s-a" data-shape="blob" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.5" aria-hidden="true"></canvas>
+          <canvas class="shape s-b" data-shape="spring" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.6" data-tilt="0.3" data-roll="0.5" aria-hidden="true"></canvas>
         </div>
       </div>
       <div class="wrap">
         <div class="shot enter-3">
           <div class="window"><img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット"></div>
-          <canvas class="shape s-l slow" data-shape="torus" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.45" data-tilt="0.9" data-roll="0.4" aria-hidden="true"></canvas>
-          <canvas class="shape s-r" data-shape="mobius" data-a="#ff5fa2" data-b="#ffd0e4" data-spin="0.5" data-tilt="0.7" aria-hidden="true"></canvas>
+          <canvas class="shape s-l slow" data-shape="torus" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.45" data-tilt="0.9" data-roll="0.4" aria-hidden="true"></canvas>
+          <canvas class="shape s-r" data-shape="mobius" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.5" data-tilt="0.7" aria-hidden="true"></canvas>
         </div>
       </div>
     </div>
@@ -63,17 +63,17 @@
       <p class="reveal">数式は、動いて初めて分かることがある。Liz CAP は、図を作るのをコードを書くのと同じ速さにします。書けばすぐ映り、つかめばコードが変わり、頼めば直ります。</p>
       <div class="trio">
         <div class="reveal">
-          <canvas class="shape " data-shape="wave" data-a="#38b6ff" data-b="#d3efff" data-spin="0.4" data-tilt="0.75" data-roll="0.1" aria-hidden="true"></canvas>
+          <canvas class="shape " data-shape="wave" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.4" data-tilt="0.75" data-roll="0.1" aria-hidden="true"></canvas>
           <h3>書いたらすぐ映る</h3>
           <p>1 文字変えるたびにシーンを作り直し、約 0.01 秒でプレビューに出ます。</p>
         </div>
         <div class="reveal">
-          <canvas class="shape slow" data-shape="mobius" data-a="#ff5fa2" data-b="#ffd0e4" data-spin="0.45" data-tilt="0.6" aria-hidden="true"></canvas>
+          <canvas class="shape slow" data-shape="mobius" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.45" data-tilt="0.6" aria-hidden="true"></canvas>
           <h3>Manim と同じ考え方</h3>
           <p>座標も play・wait・create も Manim と同じ。主な機能 230 項目のうち 229 項目に当たります。</p>
         </div>
         <div class="reveal">
-          <canvas class="shape " data-shape="torus" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.5" data-tilt="0.8" data-roll="0.35" aria-hidden="true"></canvas>
+          <canvas class="shape " data-shape="torus" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.5" data-tilt="0.8" data-roll="0.35" aria-hidden="true"></canvas>
           <h3>GPU で描く</h3>
           <p>WebGPU で描き、そのまま MP4 に。1080p 60fps や 4K でも、待たずに書き出せます。</p>
         </div>
@@ -96,7 +96,7 @@
             <a class="more" href="figs/write.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/write.mp4" poster="figs/write-poster.jpg" muted loop playsinline preload="none"></video></div>
-          <canvas class="shape f-tr" data-shape="torus" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.5" data-tilt="0.9" data-roll="0.4" aria-hidden="true"></canvas>
+          <canvas class="shape f-tr" data-shape="torus" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.5" data-tilt="0.9" data-roll="0.4" aria-hidden="true"></canvas>
         </article>
         <article class="panel c2 flip reveal">
           <div class="text">
@@ -107,7 +107,7 @@
             <a class="more" href="figs/drag.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/drag.mp4" poster="figs/drag-poster.jpg" muted loop playsinline preload="none"></video></div>
-          <canvas class="shape f-bl slow" data-shape="blob" data-a="#ff6b3d" data-b="#ffd36b" data-spin="0.45" aria-hidden="true"></canvas>
+          <canvas class="shape f-bl slow" data-shape="blob" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.45" aria-hidden="true"></canvas>
         </article>
         <article class="panel c3 reveal">
           <div class="text">
@@ -118,7 +118,7 @@
             <a class="more" href="figs/ai.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/ai.mp4" poster="figs/ai-poster.jpg" muted loop playsinline preload="none"></video></div>
-          <canvas class="shape f-br" data-shape="spring" data-a="#38b6ff" data-b="#d3efff" data-spin="0.6" data-tilt="0.3" data-roll="0.5" aria-hidden="true"></canvas>
+          <canvas class="shape f-br" data-shape="spring" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.6" data-tilt="0.3" data-roll="0.5" aria-hidden="true"></canvas>
         </article>
         <article class="panel c4 flip reveal">
           <div class="text">
@@ -129,7 +129,7 @@
             <a class="more" href="figs/export.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/export.mp4" poster="figs/export-poster.jpg" muted loop playsinline preload="none"></video></div>
-          <canvas class="shape f-tl slow" data-shape="knot" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.35" data-tilt="1.15" aria-hidden="true"></canvas>
+          <canvas class="shape f-tl slow" data-shape="knot" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.35" data-tilt="1.15" aria-hidden="true"></canvas>
         </article>
       </div>
     </section>
@@ -149,7 +149,7 @@
             <li>プレビューと書き出しは最初の 15 秒まで</li>
             <li>動画に「Liz CAP」の透かしが入ります</li>
           </ul>
-          <a class="btn" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
+          <a class="btn btn-secondary" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
         </div>
         <div class="price is-paid reveal">
           <span class="name">有料版</span>
@@ -161,7 +161,7 @@
             <li>いつでも解約でき、初回のお支払いから 14 日以内なら返金します</li>
           </ul>
           <a class="btn btn-primary" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
-          <canvas class="shape " data-shape="mobius" data-a="#7c5cff" data-b="#c9bcff" data-spin="0.5" data-tilt="0.7" aria-hidden="true"></canvas>
+          <canvas class="shape " data-shape="mobius" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.5" data-tilt="0.7" aria-hidden="true"></canvas>
         </div>
       </div>
       <p class="foot-note reveal">購入するとライセンスキーがメールで届きます。アプリの「ヘルプ → ライセンス…」に入れると有料版になります。お支払いは Lemon Squeezy が扱います。AI チャットはご自身の Anthropic の API キーで動き、その料金は Anthropic へのお支払いになります。</p>
@@ -211,10 +211,10 @@
         <p>無料版でも、すべての機能を試せます。</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード ↓</a>
-          <a class="btn btn-white" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
+          <a class="btn btn-secondary" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
         </div>
-        <canvas class="shape s-l slow" data-shape="knot" data-a="#ff6b3d" data-b="#ffd36b" data-spin="0.3" data-tilt="1.15" aria-hidden="true"></canvas>
-        <canvas class="shape s-r" data-shape="blob" data-a="#38b6ff" data-b="#d3efff" data-spin="0.5" aria-hidden="true"></canvas>
+        <canvas class="shape s-l slow" data-shape="knot" data-a="#e5e5e5" data-b="#6ea8ff" data-spin="0.3" data-tilt="1.15" aria-hidden="true"></canvas>
+        <canvas class="shape s-r" data-shape="blob" data-a="#e5e5e5" data-b="#ff8833" data-spin="0.5" aria-hidden="true"></canvas>
       </div>
     </section>
   </main>
