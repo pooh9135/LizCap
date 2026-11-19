@@ -19,7 +19,6 @@
       <a class="brand" href="./"><img src="icon.png" alt="">Liz CAP</a>
       <nav>
         <a href="#features">できること</a>
-        <a href="#speed">速さ</a>
         <a href="#pricing">料金</a>
         <a href="#faq">質問</a>
       </nav>
@@ -66,7 +65,7 @@
           <span class="label">Fig 0.3</span>
           <img src="figs/line-waves.svg" alt="" width="280" height="220">
           <h3>GPU で描く</h3>
-          <p>WebGPU で描き、そのまま MP4 に。1080p 60fps の書き出しは Manim の約 2 倍の速さです。</p>
+          <p>WebGPU で描き、そのまま MP4 に。1080p 60fps や 4K でも、待たずに書き出せます。</p>
         </div>
       </div>
     </section>
@@ -112,34 +111,6 @@
           <div class="media"><video src="figs/export.mp4" poster="figs/export-poster.jpg" muted loop playsinline preload="none"></video></div>
         </article>
       </div>
-    </section>
-
-    <section id="speed" class="wrap">
-      <div class="split-head reveal">
-        <h2 class="headline">同じ 11 秒のシーンを、<br>Manim と比べて。</h2>
-        <p>GPU で描き、シークや再生ではコードを動かし直しません。線の長さは、Manim の時間を 100 としたものです。</p>
-      </div>
-      <div class="stats">
-        <div class="stat">
-          <span class="figure">約 <b data-count="300">300</b><small>倍</small></span>
-          <span class="what">コードを直してから絵が出るまで</span>
-          <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:1.2%"></span></div>
-          <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.01 秒</dd></dl>
-        </div>
-        <div class="stat">
-          <span class="figure">約 <b data-count="2">2</b><small>倍</small></span>
-          <span class="what">1080p 60fps の動画を書き出す</span>
-          <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:48%"></span></div>
-          <dl><dt>Manim</dt><dd>9〜11 秒</dd><dt>Liz CAP</dt><dd class="win">4.6〜5.1 秒</dd></dl>
-        </div>
-        <div class="stat">
-          <span class="figure">約 <b data-count="3.5" data-decimals="1">3.5</b><small>倍</small></span>
-          <span class="what">480p 15fps の動画を書き出す</span>
-          <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:27%"></span></div>
-          <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.8 秒</dd></dl>
-        </div>
-      </div>
-      <p class="foot-note">2026 年 11 月、Core i7-14700F / GeForce RTX 4080 SUPER で計測。Manim Community v0.22.1（低画質 -ql で作り直し）。文字・座標軸・sin のグラフ・円 30 個のシーン。</p>
     </section>
 
     <section id="pricing" class="wrap">
@@ -246,18 +217,12 @@
     }), { threshold: 0.35 });
     $$(".row video").forEach((v) => vids.observe(v));
 
-    // ---- 出てくる動き・数字を数える・比べる線を伸ばす ----
+    // ---- 画面に入ると出てくる ----
     const seen = new IntersectionObserver((es) => es.forEach((e) => {
       if (!e.isIntersecting) return;
       e.target.classList.add("in"); seen.unobserve(e.target);
-      $$("[data-count]", e.target).forEach((b) => {
-        const to = +b.dataset.count, d = +(b.dataset.decimals || 0), t0 = performance.now();
-        if (reduce) return;
-        const run = (now) => { const k = Math.min(1, (now - t0) / 1100); b.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(d); if (k < 1) requestAnimationFrame(run); };
-        requestAnimationFrame(run);
-      });
     }), { threshold: 0.15 });
-    $$(".reveal, .stat").forEach((el) => seen.observe(el));
+    $$(".reveal").forEach((el) => seen.observe(el));
   </script>
 </body>
 </html>

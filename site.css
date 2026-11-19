@@ -66,22 +66,6 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 .row .media { position: relative; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #0b0b0c; border: var(--line); }
 .row .media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-/* ---- 速さ: 縦の線で区切った 3 つの数字 ---- */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: var(--line); border-bottom: var(--line); }
-.stat { padding: var(--spacing-32); border-left: var(--line); display: flex; flex-direction: column; gap: var(--spacing-16); }
-.stat:first-child { border-left: 0; padding-left: 0; }
-.stat .figure { color: var(--color-text); font-size: 56px; font-weight: 500; letter-spacing: -0.03em; line-height: 1; }
-.stat .figure small { font-size: 20px; color: var(--color-muted); margin-left: 4px; letter-spacing: 0; }
-.stat .what { color: var(--color-text-2); font-size: 15px; }
-.stat dl { display: grid; grid-template-columns: 1fr auto; margin: 0; font-size: 13px; }
-.stat dt, .stat dd { margin: 0; padding: 6px 0; border-top: var(--line); }
-.stat dd { text-align: right; }
-.stat dd.win { color: var(--color-text); }
-.bars { display: grid; gap: 6px; }
-.bar { display: block; height: 3px; border-radius: 3px; width: 0; transition: width 1200ms var(--ease-enter); }
-.bar.m { background: var(--color-line-strong); }
-.bar.l { background: var(--color-text); min-width: 3px; }
-.stat.in .bar { width: var(--w); }
 .foot-note { margin: var(--spacing-24) 0 0; font-size: 12px; color: var(--color-faint); line-height: 1.6; }
 
 /* ---- 料金 ---- */
@@ -152,9 +136,9 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
   .stage { aspect-ratio: 4 / 3; }
   .window { left: 5%; right: auto; width: 140%; top: 8%; }
   .statement > p { font-size: 26px; }
-  .figs, .stats, .prices, .faq-grid, .split-head { grid-template-columns: 1fr; }
-  .figs > div, .stat { border-left: 0; padding-left: 0; padding-right: 0; border-top: var(--line); }
-  .figs > div:first-child, .stat:first-child { border-top: 0; }
+  .figs, .prices, .faq-grid, .split-head { grid-template-columns: 1fr; }
+  .figs > div { border-left: 0; padding-left: 0; padding-right: 0; border-top: var(--line); }
+  .figs > div:first-child { border-top: 0; }
   .row, .row.flip { grid-template-columns: 1fr; }
   .row.flip .text { order: 0; }
   .row .text { padding: var(--spacing-16) var(--spacing-16) var(--spacing-8); }
@@ -168,7 +152,6 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
   .hero .lead, .split-head p, .cta p { font-size: 16px; }
   .statement > p { font-size: 22px; }
   .row .text p { font-size: 17px; }
-  .stat .figure { font-size: 44px; }
   .price { padding: var(--spacing-24); }
   .doc h1 { font-size: 34px; }
   .doc th, .doc td { display: block; width: auto; padding: var(--spacing-8) 0; }
@@ -177,5 +160,4 @@ main > section.wrap { margin-top: var(--section-gap); }   /* .wrap の margin �
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .bar { transition: none; }
 }
