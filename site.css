@@ -36,7 +36,7 @@ main > section.wrap { margin-top: var(--section-gap); }
 .panel { display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--spacing-64); align-items: center; }
 .panel.flip { grid-template-columns: 1.5fr 1fr; }
 .panel.flip .text { order: 2; }
-.panel h3 { font-size: 24px; line-height: 1.4; font-weight: 500; color: var(--color-text); margin: 0 0 var(--spacing-16); font-feature-settings: "palt"; }
+.panel h3 { font-size: 24px; line-height: 1.4; font-weight: 500; color: var(--color-text); margin: 0 0 var(--spacing-16); }
 .panel p { margin: 0; }
 .panel .note { margin-top: var(--spacing-8); font-size: 14px; color: var(--color-ash); }
 .panel .more { display: inline-block; margin-top: var(--spacing-24); color: var(--color-link); font-size: 15px; text-decoration: none; }

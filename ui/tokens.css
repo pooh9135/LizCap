@@ -14,8 +14,8 @@
   --color-link: #ff8833;
   --color-ice: #6ea8ff;
 
-  --font-sans: 'Inter', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --font-sans: 'IBM Plex Sans', 'IBM Plex Sans JP', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
 
   --spacing-8: 8px;
   --spacing-16: 16px;

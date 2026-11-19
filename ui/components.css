@@ -8,7 +8,7 @@ code { font: 400 0.88em var(--font-mono); color: var(--color-text); background: 
 ::selection { background: var(--color-paper); color: #171717; }
 
 /* 見出しは 500 で、詰めて */
-.display, .headline { font-weight: 500; color: var(--color-text); margin: 0; font-feature-settings: "palt", "clig" 0, "liga" 0; }
+.display, .headline { font-weight: 500; color: var(--color-text); margin: 0; }
 .display { font-size: 60px; line-height: 1.12; letter-spacing: -1.5px; }
 .headline { font-size: 36px; line-height: 1.25; letter-spacing: -0.6px; }
 .lead { font-size: 18px; line-height: 1.75; margin: 0; }
