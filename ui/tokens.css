@@ -1,43 +1,51 @@
-/* 販売サイトのデザイントークン（参考: linear.app と cursor.com の組み合わせ）。
-   linear.app から: ほぼ黒の地、大きく詰めた見出し、白と灰の 2 色の文、線画の図。
-   cursor.com から: 丸いボタン、文と映像を左右に置いたカード、オレンジの文中リンク。 */
+/* Liz CAP の販売サイトの色・字・間隔（2026-11-19: 濃い紺の地 + 太い見出し + 色つきの大きなカード + 数学の立体） */
 :root {
-  /* 色 */
-  --color-bg: #08090a;          /* ページの地 */
-  --color-panel: #0f1011;       /* カードの地 */
-  --color-raised: #161718;      /* 浮いた面・2 番目のボタン */
-  --color-line: #1d1e21;        /* 1px の線 */
-  --color-line-strong: #2c2d31; /* 強めの線 */
-  --color-text: #f7f8f8;        /* 見出し・強い文字 */
-  --color-text-2: #d0d6e0;      /* 本文 */
-  --color-muted: #8a8f98;       /* 2 番目の文・ナビ */
-  --color-faint: #62666d;       /* 小さなラベル */
-  --color-button: #e6e6e6;      /* 主ボタン */
-  --color-link: #f2733d;        /* 文中のリンク */
+  --color-bg: #0a0b1e;
+  --color-bg-deep: #06071a;
+  --color-panel: #14163a;
+  --color-raised: #1c1f4d;
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-text: #ffffff;
+  --color-text-2: #c3c6e6;
+  --color-muted: #9195bd;
+  --color-ink: #0a0b1e;
 
-  /* 文字 */
-  --font-sans: 'Inter', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;   /* 英字は Inter、日本語は Zen Kaku Gothic New */
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  /* 主ボタンと立体の色 */
+  --color-coral: #ff6b3d;
+  --color-coral-hi: #ff8a63;
+  --color-violet: #7c5cff;
+  --color-sky: #38b6ff;
+  --color-pink: #ff5fa2;
+  --color-sun: #ffc53d;
+  --color-mint: #2ed3a0;
 
-  /* 間隔 */
+  /* できることのカード（1 枚ごとに別の色） */
+  --grad-violet: linear-gradient(135deg, #5a39e6 0%, #9a4bf0 100%);
+  --grad-blue: linear-gradient(135deg, #1b5fd9 0%, #2a9fe8 100%);
+  --grad-pink: linear-gradient(135deg, #b82a78 0%, #ec5578 100%);
+  --grad-green: linear-gradient(135deg, #0a7659 0%, #17a276 100%);
+
+  --font-display: 'Unbounded', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;
+  --font-sans: 'Inter', 'Zen Kaku Gothic New', 'Yu Gothic UI', 'Hiragino Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  --spacing-4: 4px;
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-20: 20px;
   --spacing-24: 24px;
   --spacing-32: 32px;
+  --spacing-40: 40px;
   --spacing-48: 48px;
-  --spacing-64: 64px;
-  --spacing-96: 96px;
+  --spacing-56: 56px;
+  --spacing-80: 80px;
+  --spacing-112: 112px;
+  --section-gap: 136px;
+  --page-max: 1200px;
 
-  /* 配置 */
-  --page-max-width: 1200px;
-  --section-gap: 176px;
-
-  /* 角 */
-  --radius-sm: 6px;
-  --radius-card: 12px;
-  --radius-pill: 9999px;
-
-  --line: 1px solid var(--color-line);
-  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-btn: 12px;
+  --radius-card: 16px;
+  --radius-panel: 32px;
+  --radius-pill: 104px;
 }

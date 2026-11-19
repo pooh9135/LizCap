@@ -1,56 +1,51 @@
-/* 販売サイトの部品（参考: linear.app + cursor.com）：
-   - 地はほぼ黒、面は 1px の線と少し明るい地で分ける
-   - 見出しは Inter 500 で大きく詰める。文は「白い 1 文 + 灰色の続き」の 2 色
-   - ボタンは丸く、主ボタンは明るい灰色、2 番目は暗い地に線
-   - 色は文中のリンクのオレンジだけ */
+/* 部品: 字・ボタン・出てくる動き */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text-2); font: 400 16px/1.7 var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img, video, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+code { font: 400 0.9em var(--font-mono); background: rgba(255, 255, 255, 0.14); padding: 0.1em 0.4em; border-radius: 6px; }
+::selection { background: var(--color-coral); color: var(--color-ink); }
 
-/* ---- 土台 ---- */
-html, body { background: var(--color-bg); color: var(--color-muted); }
-body {
-  margin: 0; font-family: var(--font-sans); font-size: 16px; line-height: 1.55;
-  font-feature-settings: "cv01", "ss03", "palt";
-  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-}
-h1, h2, h3, p { word-break: auto-phrase; text-wrap: pretty; }   /* 日本語を文節の切れ目で折り返す */
-::selection { background: #3d4250; color: var(--color-text); }
-*::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb { background: var(--color-line-strong); border: 3px solid var(--color-bg); border-radius: 10px; }
-*::-webkit-scrollbar-track { background: var(--color-bg); }
-code { font-family: var(--font-mono); font-size: 0.86em; color: var(--color-text); background: var(--color-raised);
-       border: var(--line); border-radius: 4px; padding: 1px 5px; }
+/* 見出しは太く、詰めて */
+.display, .headline, .title { font-family: var(--font-display); font-weight: 900; color: var(--color-text); margin: 0; letter-spacing: -0.01em; font-feature-settings: "palt"; }
+.display { font-size: 60px; line-height: 1.16; }
+.headline { font-size: 44px; line-height: 1.2; }
+.title { font-size: 28px; line-height: 1.3; }
+.lead { font-size: 18px; line-height: 1.8; color: var(--color-text-2); margin: 0; }
 
-/* ---- 文字 ---- */
-.display { margin: 0; color: var(--color-text); font-weight: 500; font-size: 64px; line-height: 1.06; letter-spacing: -0.022em; }
-.headline { margin: 0; color: var(--color-text); font-weight: 500; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; }
-.title { margin: 0; color: var(--color-text); font-weight: 500; font-size: 20px; line-height: 1.35; letter-spacing: -0.01em; }
-/* 白い 1 文 + 灰色の続き（linear.app の宣言文、cursor.com のカードの文） */
-.two-tone { color: var(--color-muted); }
-.two-tone b { color: var(--color-text); font-weight: inherit; }
-.label { font: 400 11px/1.4 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-faint); }
+.tag { display: flex; justify-content: center; margin-bottom: var(--spacing-16); align-items: center; gap: var(--spacing-8); font: 800 11px/1 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-sun); }
 
-/* ---- リンク ---- */
-.link { color: var(--color-link); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-.link::after { content: "→"; transition: transform 150ms ease-out; }
-.link:hover::after { transform: translateX(3px); }
+/* ボタン: 主はコーラル、次は白。同じ色を 2 つ並べない */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-8); height: 52px; padding: 0 var(--spacing-24); border-radius: var(--radius-btn); border: 1px solid rgba(255, 255, 255, 0.4); background: transparent; color: var(--color-text); font: 700 15px/1 var(--font-sans); text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+.btn:hover { transform: translateY(-2px); border-color: #fff; }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 3px solid var(--color-sun); outline-offset: 3px; }
+.btn-primary { background: var(--color-coral); border-color: var(--color-coral); color: var(--color-ink); }
+.btn-primary:hover { background: var(--color-coral-hi); border-color: var(--color-coral-hi); }
+.btn-white { background: #fff; border-color: #fff; color: var(--color-ink); }
+.btn-white:hover { background: #ecebff; }
+.btn-dark { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
+.btn-dark:hover { border-color: var(--color-ink); background: #1c1f4d; }
+.btn-sm { height: 40px; padding: 0 var(--spacing-16); font-size: 14px; }
 
-/* ---- ボタン（丸い） ---- */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 20px; box-sizing: border-box;
-       border-radius: var(--radius-pill); font: 500 15px/1 var(--font-sans); text-decoration: none; cursor: pointer; white-space: nowrap;
-       border: 1px solid var(--color-line-strong); background: var(--color-raised); color: var(--color-text);
-       transition: background-color 150ms ease-out, border-color 150ms ease-out; }
-.btn:hover { background: #202124; border-color: #3a3b40; }
-.btn:focus-visible { outline: 2px solid var(--color-muted); outline-offset: 2px; }
-.btn-primary { background: var(--color-button); color: #08090a; border-color: var(--color-button); }
-.btn-primary:hover { background: #ffffff; border-color: #ffffff; }
-.btn-sm { height: 32px; padding: 0 14px; font-size: 13px; }
-.btn .ic { font-size: 14px; line-height: 1; }
+/* 出てくる動き */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.enter { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+.enter-2 { animation: rise .7s .1s cubic-bezier(.2, .7, .2, 1) both; }
+.enter-3 { animation: rise .7s .2s cubic-bezier(.2, .7, .2, 1) both; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.reveal.in { opacity: 1; transform: none; }
 
-/* ---- 出てくるときの動き ---- */
-.enter   { animation: ln-enter 600ms var(--ease-enter) both; }
-.enter-2 { animation: ln-enter 700ms var(--ease-enter) 80ms both; }
-.enter-3 { animation: ln-enter 800ms var(--ease-enter) 160ms both; }
-@keyframes ln-enter { from { opacity: 0; transform: translateY(12px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+/* 浮かぶ立体 */
+@keyframes bob { from { transform: translateY(-8px); } to { transform: translateY(10px); } }
+canvas.shape { pointer-events: none; animation: bob 4.5s ease-in-out infinite alternate; }
+canvas.shape.slow { animation-duration: 6.5s; }
+canvas.shape.no-gl { visibility: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
-  .enter, .enter-2, .enter-3 { animation: none; }
+  html { scroll-behavior: auto; }
+  .enter, .enter-2, .enter-3, canvas.shape { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn { transition: none; }
 }

@@ -8,7 +8,7 @@
   <link rel="icon" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400&family=Unbounded:wght@800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="ui/tokens.css">
   <link rel="stylesheet" href="ui/components.css">
   <link rel="stylesheet" href="site.css">
@@ -24,46 +24,56 @@
       </nav>
       <div class="actions">
         <a class="btn btn-sm" href="#pricing">有料版</a>
-        <a class="btn btn-sm btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
+        <a class="btn btn-sm btn-white" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
       </div>
     </div>
   </header>
 
   <main>
-    <div class="wrap hero" id="top">
-      <h1 class="display enter">数式を、書いた瞬間に<br>動く図にするエディタ</h1>
-      <div class="hero-row enter-2">
-        <p class="lead">TypeScript でシーンを書くと、横のプレビューにすぐ映ります。図形をつかめばコードが変わり、AI に頼めばコードごと直ります。</p>
-        <a class="new" href="https://github.com/pooh9135/lizcap/releases/latest"><b>New</b>0.1.1 を公開しました →</a>
+    <div class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <a class="new enter" href="https://github.com/pooh9135/lizcap/releases/latest"><b>NEW</b>0.1.1 を公開しました →</a>
+          <h1 class="display enter">数式を、<br>書いた瞬間に<br>動く図に。</h1>
+          <p class="lead enter-2">TypeScript でシーンを書くと、横のプレビューにすぐ映ります。図形をつかめばコードが変わり、AI に頼めばコードごと直ります。</p>
+          <div class="actions enter-3">
+            <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード ↓</a>
+            <a class="btn btn-white" href="#features">できることを見る</a>
+          </div>
+          <p class="small enter-3">無料で始められます。Windows 10 / 11（64 ビット）。</p>
+        </div>
+        <div class="hero-art enter-2">
+          <canvas class="shape s-main slow" data-shape="knot" data-a="#ff6b3d" data-b="#ffd36b" data-spin="0.28" data-tilt="1.15" data-roll="0.25" aria-hidden="true"></canvas>
+          <canvas class="shape s-a" data-shape="blob" data-a="#7c5cff" data-b="#c9bcff" data-spin="0.5" aria-hidden="true"></canvas>
+          <canvas class="shape s-b" data-shape="spring" data-a="#2ed3a0" data-b="#d6fff1" data-spin="0.6" data-tilt="0.3" data-roll="0.5" aria-hidden="true"></canvas>
+        </div>
       </div>
-      <div class="actions enter-3">
-        <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード <span class="ic">↓</span></a>
-        <a class="btn" href="#features">できることを見る <span class="ic">→</span></a>
-      </div>
-      <div class="stage enter-3">
-        <video src="hero.mp4" poster="hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-        <div class="window"><img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット"></div>
+      <div class="wrap">
+        <div class="shot enter-3">
+          <div class="window"><img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット"></div>
+          <canvas class="shape s-l slow" data-shape="torus" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.45" data-tilt="0.9" data-roll="0.4" aria-hidden="true"></canvas>
+          <canvas class="shape s-r" data-shape="mobius" data-a="#ff5fa2" data-b="#ffd0e4" data-spin="0.5" data-tilt="0.7" aria-hidden="true"></canvas>
+        </div>
       </div>
     </div>
 
-    <section class="wrap statement reveal">
-      <p class="two-tone"><b>説明したい人のための、新しい作図の道具。</b>数式は、動いて初めて分かることがある。Liz CAP は、図を作るのをコードを書くのと同じ速さにします。書けばすぐ映り、つかめばコードが変わり、頼めば直ります。</p>
-      <div class="figs">
+    <section class="wrap intro">
+      <span class="tag reveal">Liz CAP とは</span>
+      <h2 class="headline reveal">説明したい人のための、新しい作図の道具。</h2>
+      <p class="reveal">数式は、動いて初めて分かることがある。Liz CAP は、図を作るのをコードを書くのと同じ速さにします。書けばすぐ映り、つかめばコードが変わり、頼めば直ります。</p>
+      <div class="trio">
         <div class="reveal">
-          <span class="label">Fig 0.1</span>
-          <img src="figs/line-surface.svg" alt="" width="280" height="220">
+          <canvas class="shape " data-shape="wave" data-a="#38b6ff" data-b="#d3efff" data-spin="0.4" data-tilt="0.75" data-roll="0.1" aria-hidden="true"></canvas>
           <h3>書いたらすぐ映る</h3>
           <p>1 文字変えるたびにシーンを作り直し、約 0.01 秒でプレビューに出ます。</p>
         </div>
         <div class="reveal">
-          <span class="label">Fig 0.2</span>
-          <img src="figs/line-helix.svg" alt="" width="280" height="220">
+          <canvas class="shape slow" data-shape="mobius" data-a="#ff5fa2" data-b="#ffd0e4" data-spin="0.45" data-tilt="0.6" aria-hidden="true"></canvas>
           <h3>Manim と同じ考え方</h3>
           <p>座標も play・wait・create も Manim と同じ。主な機能 230 項目のうち 229 項目に当たります。</p>
         </div>
         <div class="reveal">
-          <span class="label">Fig 0.3</span>
-          <img src="figs/line-waves.svg" alt="" width="280" height="220">
+          <canvas class="shape " data-shape="torus" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.5" data-tilt="0.8" data-roll="0.35" aria-hidden="true"></canvas>
           <h3>GPU で描く</h3>
           <p>WebGPU で描き、そのまま MP4 に。1080p 60fps や 4K でも、待たずに書き出せます。</p>
         </div>
@@ -71,51 +81,63 @@
     </section>
 
     <section id="features" class="wrap">
-      <div class="split-head reveal">
-        <h2 class="headline">コードと絵が、<br>いつも同じ。</h2>
-        <div>
-          <p>書く・つかむ・頼む・書き出す。どこから触っても、コードとプレビューが同じ状態に戻ります。映像はどれも Liz CAP で作って、そのまま書き出したものです。</p>
-        </div>
+      <div class="sec-head reveal">
+        <span class="tag">できること</span>
+        <h2 class="headline">コードと絵が、いつも同じ。</h2>
+        <p>書く・つかむ・頼む・書き出す。どこから触っても、コードとプレビューが同じ状態に戻ります。映像はどれも Liz CAP で作って、そのまま書き出したものです。</p>
       </div>
-      <div class="rows">
-        <article class="row reveal">
+      <div class="panels">
+        <article class="panel c1 reveal">
           <div class="text">
-            <p class="two-tone"><b>書いたらすぐ映る</b><br>保存も実行ボタンもいりません。1 文字変えるたびに、プレビューとタイムラインがそのまま追いつきます。</p>
+            <span class="num">01 — WRITE</span>
+            <h3>書いたら<br>すぐ映る</h3>
+            <p>保存も実行ボタンもいりません。1 文字変えるたびに、プレビューとタイムラインがそのまま追いつきます。</p>
             <p class="note">シークや再生ではコードを動かし直さないので、長い動画でも軽いままです。</p>
-            <a class="link" href="figs/write.liz.ts.txt">この映像のコード</a>
+            <a class="more" href="figs/write.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/write.mp4" poster="figs/write-poster.jpg" muted loop playsinline preload="none"></video></div>
+          <canvas class="shape f-tr" data-shape="torus" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.5" data-tilt="0.9" data-roll="0.4" aria-hidden="true"></canvas>
         </article>
-        <article class="row flip reveal">
+        <article class="panel c2 flip reveal">
           <div class="text">
-            <p class="two-tone"><b>つかんで動かすと、コードが変わる</b><br>プレビューの円や点をドラッグすると、位置を決めている数字が書き換わります。</p>
+            <span class="num">02 — DRAG</span>
+            <h3>つかんで動かすと、<br>コードが変わる</h3>
+            <p>プレビューの円や点をドラッグすると、位置を決めている数字が書き換わります。</p>
             <p class="note"><code>x</code> や <code>moveTo([3, 2])</code> の数字、3D ではカメラの角度も。手で合わせて、コードで残せます。</p>
-            <a class="link" href="figs/drag.liz.ts.txt">この映像のコード</a>
+            <a class="more" href="figs/drag.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/drag.mp4" poster="figs/drag-poster.jpg" muted loop playsinline preload="none"></video></div>
+          <canvas class="shape f-bl slow" data-shape="blob" data-a="#ff6b3d" data-b="#ffd36b" data-spin="0.45" aria-hidden="true"></canvas>
         </article>
-        <article class="row reveal">
+        <article class="panel c3 reveal">
           <div class="text">
-            <p class="two-tone"><b>頼めば、コードごと直る</b><br>AI チャットに「cos のグラフも足して」と頼むと、コードを書き換えます。</p>
+            <span class="num">03 — ASK</span>
+            <h3>頼めば、<br>コードごと直る</h3>
+            <p>AI チャットに「cos のグラフも足して」と頼むと、コードを書き換えます。</p>
             <p class="note">変わった所は緑と赤で見え、「採用」か「却下」で決められます。Claude Code などの AI からも MCP でつなげます。</p>
-            <a class="link" href="figs/ai.liz.ts.txt">この映像のコード</a>
+            <a class="more" href="figs/ai.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/ai.mp4" poster="figs/ai-poster.jpg" muted loop playsinline preload="none"></video></div>
+          <canvas class="shape f-br" data-shape="spring" data-a="#38b6ff" data-b="#d3efff" data-spin="0.6" data-tilt="0.3" data-roll="0.5" aria-hidden="true"></canvas>
         </article>
-        <article class="row flip reveal">
+        <article class="panel c4 flip reveal">
           <div class="text">
-            <p class="two-tone"><b>GPU で MP4 に書き出す</b><br>グラフ・数式・文字・表・ベクトル場・3D の立体を、1080p 60fps や 4K で。</p>
+            <span class="num">04 — EXPORT</span>
+            <h3>GPU で MP4 に<br>書き出す</h3>
+            <p>グラフ・数式・文字・表・ベクトル場・3D の立体を、1080p 60fps や 4K で。</p>
             <p class="note">GIF や PNG の連番（背景を透明にもできます）にも書き出せ、音声と字幕も付けられます。</p>
-            <a class="link" href="figs/export.liz.ts.txt">この映像のコード</a>
+            <a class="more" href="figs/export.liz.ts.txt">この映像のコード →</a>
           </div>
           <div class="media"><video src="figs/export.mp4" poster="figs/export-poster.jpg" muted loop playsinline preload="none"></video></div>
+          <canvas class="shape f-tl slow" data-shape="knot" data-a="#ffc53d" data-b="#fff3c4" data-spin="0.35" data-tilt="1.15" aria-hidden="true"></canvas>
         </article>
       </div>
     </section>
 
     <section id="pricing" class="wrap">
-      <div class="split-head reveal">
-        <h2 class="headline">まず無料で。<br>続きは月 980 円。</h2>
+      <div class="sec-head reveal">
+        <span class="tag">料金</span>
+        <h2 class="headline">まず無料で。続きは月 980 円。</h2>
         <p>無料版でも、エディタ・ドラッグ・AI チャット・MCP はすべて使えます。長い動画を透かしなしで出したくなったら有料版へ。</p>
       </div>
       <div class="prices">
@@ -139,18 +161,19 @@
             <li>いつでも解約でき、初回のお支払いから 14 日以内なら返金します</li>
           </ul>
           <a class="btn btn-primary" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
+          <canvas class="shape " data-shape="mobius" data-a="#7c5cff" data-b="#c9bcff" data-spin="0.5" data-tilt="0.7" aria-hidden="true"></canvas>
         </div>
       </div>
-      <p class="foot-note">購入するとライセンスキーがメールで届きます。アプリの「ヘルプ → ライセンス…」に入れると有料版になります。お支払いは Lemon Squeezy が扱います。AI チャットはご自身の Anthropic の API キーで動き、その料金は Anthropic へのお支払いになります。</p>
+      <p class="foot-note reveal">購入するとライセンスキーがメールで届きます。アプリの「ヘルプ → ライセンス…」に入れると有料版になります。お支払いは Lemon Squeezy が扱います。AI チャットはご自身の Anthropic の API キーで動き、その料金は Anthropic へのお支払いになります。</p>
     </section>
 
     <section id="faq" class="wrap">
-      <div class="faq-grid">
-        <div class="side reveal">
-          <h2 class="headline">よくある質問</h2>
-          <p>ほかに分からないことがあれば、<a href="mailto:lizlaboratory7@gmail.com">お問い合わせ</a>ください。</p>
-        </div>
-        <div class="faq reveal">
+      <div class="sec-head reveal">
+        <span class="tag">質問</span>
+        <h2 class="headline">よくある質問</h2>
+        <p>ほかに分からないことがあれば、<a href="mailto:lizlaboratory7@gmail.com">お問い合わせ</a>ください。</p>
+      </div>
+      <div class="faq reveal">
           <details>
             <summary>どんなパソコンで動きますか？</summary>
             <p>Windows 10 / 11（64 ビット）で、WebGPU が使える GPU が必要です。ここ数年のパソコンなら、内蔵 GPU でもたいてい動きます。</p>
@@ -180,15 +203,18 @@
             <p>購入時のメールにある Lemon Squeezy の注文ページから、いつでも解約できます。解約しても、お支払い済みの期間の終わりまでは有料版のまま使えます。</p>
           </details>
         </div>
-      </div>
     </section>
 
-    <section class="wrap cta reveal">
-      <h2 class="display">今日から、図はコードで。</h2>
-      <p>無料版でも、すべての機能を試せます。</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード <span class="ic">↓</span></a>
-        <a class="btn" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入 <span class="ic">→</span></a>
+    <section class="wrap">
+      <div class="cta reveal">
+        <h2 class="display">今日から、図はコードで。</h2>
+        <p>無料版でも、すべての機能を試せます。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード ↓</a>
+          <a class="btn btn-white" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
+        </div>
+        <canvas class="shape s-l slow" data-shape="knot" data-a="#ff6b3d" data-b="#ffd36b" data-spin="0.3" data-tilt="1.15" aria-hidden="true"></canvas>
+        <canvas class="shape s-r" data-shape="blob" data-a="#38b6ff" data-b="#d3efff" data-spin="0.5" aria-hidden="true"></canvas>
       </div>
     </section>
   </main>
@@ -205,23 +231,23 @@
       </nav>
     </div>
   </footer>
+  <script src="shapes.js" defer></script>
   <script>
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-    if (reduce) { const h = document.querySelector(".stage video"); h.removeAttribute("autoplay"); h.pause(); }
 
     // ---- できることの映像: 見えている間だけ流す ----
     const vids = new IntersectionObserver((es) => es.forEach((e) => {
       const v = e.target;
       if (e.isIntersecting) { v.preload = "auto"; if (!reduce) v.play().catch(() => {}); } else v.pause();
     }), { threshold: 0.35 });
-    $$(".row video").forEach((v) => vids.observe(v));
+    $$(".panel video").forEach((v) => vids.observe(v));
 
     // ---- 画面に入ると出てくる ----
     const seen = new IntersectionObserver((es) => es.forEach((e) => {
       if (!e.isIntersecting) return;
       e.target.classList.add("in"); seen.unobserve(e.target);
-    }), { threshold: 0.15 });
+    }), { threshold: 0.12 });
     $$(".reveal").forEach((el) => seen.observe(el));
   </script>
 </body>
