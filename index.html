@@ -14,188 +14,172 @@
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
-  <div class="announce"><b>Liz CAP 0.1.1</b> を公開しました。Windows 10 / 11 で無料で使えます。<a href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード →</a></div>
-
   <header class="top">
     <div class="wrap">
       <a class="brand" href="./"><img src="icon.png" alt="">Liz CAP</a>
       <nav>
-        <a href="#product">画面</a>
         <a href="#features">できること</a>
         <a href="#speed">速さ</a>
         <a href="#pricing">料金</a>
         <a href="#faq">質問</a>
       </nav>
       <div class="actions">
-        <a class="btn btn-ghost" href="#pricing">有料版</a>
-        <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
+        <a class="btn btn-sm" href="#pricing">有料版</a>
+        <a class="btn btn-sm btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
       </div>
     </div>
   </header>
 
   <main>
     <div class="wrap hero" id="top">
-      <div>
-        <span class="chip enter"><span class="dot"></span>Code · Animate · Preview</span>
-        <h1 class="display enter-2">書いた瞬間に、<br>動く図になる。</h1>
-        <p class="lead enter-3">Liz CAP は、数学・科学の解説アニメーションを作るエディタです。TypeScript でシーンを書くと、横のプレビューにすぐ映ります。図形をつかんで動かせばコードの数値が変わり、AI に頼めばコードごと直してくれます。</p>
-        <div class="actions enter-3">
-          <a class="btn btn-primary btn-lg" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード（無料）</a>
-          <a class="btn btn-lg" href="#pricing">有料版について</a>
-        </div>
-        <p class="note enter-3">Windows 10 / 11（64 ビット）· WebGPU が使える GPU</p>
+      <h1 class="display enter">数式を、書いた瞬間に<br>動く図にするエディタ</h1>
+      <div class="hero-row enter-2">
+        <p class="lead">TypeScript でシーンを書くと、横のプレビューにすぐ映ります。図形をつかめばコードが変わり、AI に頼めばコードごと直ります。</p>
+        <a class="new" href="https://github.com/pooh9135/lizcap/releases/latest"><b>New</b>0.1.1 を公開しました →</a>
       </div>
-      <div class="orb enter-2" aria-label="Liz CAP で描いたローレンツ方程式の軌跡">
+      <div class="actions enter-3">
+        <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード <span class="ic">↓</span></a>
+        <a class="btn" href="#features">できることを見る <span class="ic">→</span></a>
+      </div>
+      <div class="stage enter-3">
         <video src="hero.mp4" poster="hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-        <span class="ring blur" aria-hidden="true"></span>
-        <span class="ring" aria-hidden="true"></span>
-        <span class="ring inner" aria-hidden="true"></span>
-        <p class="tag tl"><b>ローレンツ方程式</b><br>σ 10 · ρ 28 · β 8⁄3</p>
-        <p class="tag br">Liz CAP で描いて書き出し<br><a href="hero.liz.ts.txt">コードを見る</a></p>
+        <div class="window"><img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット"></div>
       </div>
     </div>
 
-    <section id="product">
-      <div class="wrap">
-        <div class="card demo reveal">
-          <div class="view">
-            <img src="screenshot.png" width="2400" height="1350" alt="Liz CAP の画面。左にプレビュー、中央にコード、右に AI チャット">
-            <span class="hl off" aria-hidden="true"></span>
-            <p class="caption" data-caption aria-live="polite">左にプレビュー、中央にコード、右に AI。Cursor と同じ並びです。</p>
-          </div>
-          <div class="tabs" role="tablist" aria-label="画面の部分">
-            <button class="is-on" role="tab" data-region="all">全体 <kbd>1</kbd></button>
-            <button role="tab" data-region="preview">プレビュー <kbd>2</kbd></button>
-            <button role="tab" data-region="code">コード <kbd>3</kbd></button>
-            <button role="tab" data-region="ai">AI チャット <kbd>4</kbd></button>
-          </div>
+    <section class="wrap statement reveal">
+      <p class="two-tone"><b>説明したい人のための、新しい作図の道具。</b>数式は、動いて初めて分かることがある。Liz CAP は、図を作るのをコードを書くのと同じ速さにします。書けばすぐ映り、つかめばコードが変わり、頼めば直ります。</p>
+      <div class="figs">
+        <div class="reveal">
+          <span class="label">Fig 0.1</span>
+          <img src="figs/line-surface.svg" alt="" width="280" height="220">
+          <h3>書いたらすぐ映る</h3>
+          <p>1 文字変えるたびにシーンを作り直し、約 0.01 秒でプレビューに出ます。</p>
+        </div>
+        <div class="reveal">
+          <span class="label">Fig 0.2</span>
+          <img src="figs/line-helix.svg" alt="" width="280" height="220">
+          <h3>Manim と同じ考え方</h3>
+          <p>座標も play・wait・create も Manim と同じ。主な機能 230 項目のうち 229 項目に当たります。</p>
+        </div>
+        <div class="reveal">
+          <span class="label">Fig 0.3</span>
+          <img src="figs/line-waves.svg" alt="" width="280" height="220">
+          <h3>GPU で描く</h3>
+          <p>WebGPU で描き、そのまま MP4 に。1080p 60fps の書き出しは Manim の約 2 倍の速さです。</p>
         </div>
       </div>
     </section>
 
-    <section id="features">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="chip">できること</span>
-          <h2 class="headline">コードと絵が、いつも同じ。</h2>
-          <p>書く・つかむ・頼む・書き出す。どこから触っても、コードとプレビューが同じ状態に戻ります。下の映像はどれも、Liz CAP で作ってそのまま書き出したものです。</p>
+    <section id="features" class="wrap">
+      <div class="split-head reveal">
+        <h2 class="headline">コードと絵が、<br>いつも同じ。</h2>
+        <div>
+          <p>書く・つかむ・頼む・書き出す。どこから触っても、コードとプレビューが同じ状態に戻ります。映像はどれも Liz CAP で作って、そのまま書き出したものです。</p>
         </div>
-        <div class="mosaic">
-          <article class="card feature wide reveal">
-            <div class="body">
-              <span class="chip">01 · ライブプレビュー</span>
-              <h3 class="feature-title">書いたらすぐ映る</h3>
-              <p>保存も実行ボタンもいりません。1 文字変えるたびにシーンを作り直し、プレビューとタイムラインがそのまま追いつきます。シークや再生ではコードを動かし直さないので、長い動画でも軽いままです。</p>
-              <dl class="spec"><dt>作り直し</dt><dd>約 0.01 秒</dd><dt>描画</dt><dd>WebGPU</dd><dt>シーク</dt><dd>コードを再実行しない</dd></dl>
-              <a class="link" href="figs/write.liz.ts.txt">この映像のコード</a>
-            </div>
-            <div class="media"><video src="figs/write.mp4" poster="figs/write-poster.jpg" muted loop playsinline preload="none"></video></div>
-          </article>
-          <article class="card feature reveal">
-            <div class="media"><video src="figs/drag.mp4" poster="figs/drag-poster.jpg" muted loop playsinline preload="none"></video></div>
-            <div class="body">
-              <span class="chip">02 · 直接さわる</span>
-              <h3 class="feature-title">つかんで動かすと、コードが変わる</h3>
-              <p>プレビューの円や点をドラッグすると、位置を決めている <code>x</code> や <code>moveTo([3, 2])</code> の数字が書き換わります。3D ではカメラの角度も。手で合わせて、コードで残せます。</p>
-              <a class="link" href="figs/drag.liz.ts.txt">この映像のコード</a>
-            </div>
-          </article>
-          <article class="card feature reveal">
-            <div class="media"><video src="figs/ai.mp4" poster="figs/ai-poster.jpg" muted loop playsinline preload="none"></video></div>
-            <div class="body">
-              <span class="chip">03 · AI と作る</span>
-              <h3 class="feature-title">頼めば、コードごと直る</h3>
-              <p>右の AI チャットに「cos のグラフも足して」と頼むと、コードを書き換えます。変わった所は緑と赤で見え、「採用」か「却下」で決められます。Claude Code などの AI からも MCP でつなげます。</p>
-              <a class="link" href="figs/ai.liz.ts.txt">この映像のコード</a>
-            </div>
-          </article>
-          <article class="card feature wide flip reveal">
-            <div class="body">
-              <span class="chip">04 · 書き出し</span>
-              <h3 class="feature-title">GPU で MP4 に書き出す</h3>
-              <p>グラフ・数式（LaTeX 記法）・文字・表・ベクトル場・3D の立体を、1080p 60fps や 4K で MP4 にします。GIF や PNG の連番（背景を透明にもできます）にも書き出せ、音声と字幕も付けられます。</p>
-              <dl class="spec"><dt>動画</dt><dd>MP4（H.264）· 4K まで</dd><dt>ほか</dt><dd>GIF · PNG 連番 · SRT 字幕</dd></dl>
-              <a class="link" href="figs/export.liz.ts.txt">この映像のコード</a>
-            </div>
-            <div class="media"><video src="figs/export.mp4" poster="figs/export-poster.jpg" muted loop playsinline preload="none"></video></div>
-          </article>
-        </div>
+      </div>
+      <div class="rows">
+        <article class="row reveal">
+          <div class="text">
+            <p class="two-tone"><b>書いたらすぐ映る</b><br>保存も実行ボタンもいりません。1 文字変えるたびに、プレビューとタイムラインがそのまま追いつきます。</p>
+            <p class="note">シークや再生ではコードを動かし直さないので、長い動画でも軽いままです。</p>
+            <a class="link" href="figs/write.liz.ts.txt">この映像のコード</a>
+          </div>
+          <div class="media"><video src="figs/write.mp4" poster="figs/write-poster.jpg" muted loop playsinline preload="none"></video></div>
+        </article>
+        <article class="row flip reveal">
+          <div class="text">
+            <p class="two-tone"><b>つかんで動かすと、コードが変わる</b><br>プレビューの円や点をドラッグすると、位置を決めている数字が書き換わります。</p>
+            <p class="note"><code>x</code> や <code>moveTo([3, 2])</code> の数字、3D ではカメラの角度も。手で合わせて、コードで残せます。</p>
+            <a class="link" href="figs/drag.liz.ts.txt">この映像のコード</a>
+          </div>
+          <div class="media"><video src="figs/drag.mp4" poster="figs/drag-poster.jpg" muted loop playsinline preload="none"></video></div>
+        </article>
+        <article class="row reveal">
+          <div class="text">
+            <p class="two-tone"><b>頼めば、コードごと直る</b><br>AI チャットに「cos のグラフも足して」と頼むと、コードを書き換えます。</p>
+            <p class="note">変わった所は緑と赤で見え、「採用」か「却下」で決められます。Claude Code などの AI からも MCP でつなげます。</p>
+            <a class="link" href="figs/ai.liz.ts.txt">この映像のコード</a>
+          </div>
+          <div class="media"><video src="figs/ai.mp4" poster="figs/ai-poster.jpg" muted loop playsinline preload="none"></video></div>
+        </article>
+        <article class="row flip reveal">
+          <div class="text">
+            <p class="two-tone"><b>GPU で MP4 に書き出す</b><br>グラフ・数式・文字・表・ベクトル場・3D の立体を、1080p 60fps や 4K で。</p>
+            <p class="note">GIF や PNG の連番（背景を透明にもできます）にも書き出せ、音声と字幕も付けられます。</p>
+            <a class="link" href="figs/export.liz.ts.txt">この映像のコード</a>
+          </div>
+          <div class="media"><video src="figs/export.mp4" poster="figs/export-poster.jpg" muted loop playsinline preload="none"></video></div>
+        </article>
       </div>
     </section>
 
-    <section id="speed">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="chip">速さ</span>
-          <h2 class="headline">同じ 11 秒のシーンを、Manim と比べて。</h2>
-          <p>GPU で描き、シークや再生ではコードを動かし直しません。直した結果が、ほぼ待たずに見えます。線の長さは、Manim の時間を 100 としたものです。</p>
-        </div>
-        <div class="stats">
-          <div class="card stat">
-            <span class="label">コードを直してから絵が出るまで</span>
-            <span class="figure">約 <b data-count="300">300</b><small>倍</small></span>
-            <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:1.2%"></span></div>
-            <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.01 秒</dd></dl>
-          </div>
-          <div class="card stat">
-            <span class="label">1080p 60fps の動画を書き出す</span>
-            <span class="figure">約 <b data-count="2">2</b><small>倍</small></span>
-            <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:48%"></span></div>
-            <dl><dt>Manim</dt><dd>9〜11 秒</dd><dt>Liz CAP</dt><dd class="win">4.6〜5.1 秒</dd></dl>
-          </div>
-          <div class="card stat">
-            <span class="label">480p 15fps の動画を書き出す</span>
-            <span class="figure">約 <b data-count="3.5" data-decimals="1">3.5</b><small>倍</small></span>
-            <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:27%"></span></div>
-            <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.8 秒</dd></dl>
-          </div>
-        </div>
-        <p class="foot-note">2026 年 11 月、Core i7-14700F / GeForce RTX 4080 SUPER で計測。Manim Community v0.22.1（低画質 -ql で作り直し）。文字・座標軸・sin のグラフ・円 30 個のシーン。</p>
+    <section id="speed" class="wrap">
+      <div class="split-head reveal">
+        <h2 class="headline">同じ 11 秒のシーンを、<br>Manim と比べて。</h2>
+        <p>GPU で描き、シークや再生ではコードを動かし直しません。線の長さは、Manim の時間を 100 としたものです。</p>
       </div>
+      <div class="stats">
+        <div class="stat">
+          <span class="figure">約 <b data-count="300">300</b><small>倍</small></span>
+          <span class="what">コードを直してから絵が出るまで</span>
+          <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:1.2%"></span></div>
+          <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.01 秒</dd></dl>
+        </div>
+        <div class="stat">
+          <span class="figure">約 <b data-count="2">2</b><small>倍</small></span>
+          <span class="what">1080p 60fps の動画を書き出す</span>
+          <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:48%"></span></div>
+          <dl><dt>Manim</dt><dd>9〜11 秒</dd><dt>Liz CAP</dt><dd class="win">4.6〜5.1 秒</dd></dl>
+        </div>
+        <div class="stat">
+          <span class="figure">約 <b data-count="3.5" data-decimals="1">3.5</b><small>倍</small></span>
+          <span class="what">480p 15fps の動画を書き出す</span>
+          <div class="bars" aria-hidden="true"><span class="bar m" style="--w:100%"></span><span class="bar l" style="--w:27%"></span></div>
+          <dl><dt>Manim</dt><dd>約 3 秒</dd><dt>Liz CAP</dt><dd class="win">約 0.8 秒</dd></dl>
+        </div>
+      </div>
+      <p class="foot-note">2026 年 11 月、Core i7-14700F / GeForce RTX 4080 SUPER で計測。Manim Community v0.22.1（低画質 -ql で作り直し）。文字・座標軸・sin のグラフ・円 30 個のシーン。</p>
     </section>
 
-    <section id="pricing">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="chip">料金</span>
-          <h2 class="headline">まず無料で。続きは月 980 円。</h2>
-          <p>無料版でも、エディタ・ドラッグ・AI チャット・MCP はすべて使えます。長い動画を透かしなしで出したくなったら有料版へ。</p>
-        </div>
-        <div class="prices">
-          <div class="card price reveal">
-            <span class="label">無料版</span>
-            <div class="amount">0 円</div>
-            <ul>
-              <li>エディタ・プレビュー・ドラッグ・AI チャット・MCP はすべて使えます</li>
-              <li>プレビューと書き出しは最初の 15 秒まで</li>
-              <li>動画に「Liz CAP」の透かしが入ります</li>
-            </ul>
-            <a class="btn" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
-          </div>
-          <div class="card price is-paid reveal">
-            <span class="label">有料版</span>
-            <div class="amount">980 円<small>／月（税込）</small></div>
-            <ul>
-              <li>長さの制限なし</li>
-              <li>透かしなし</li>
-              <li>1 つのキーで 3 台まで</li>
-              <li>いつでも解約でき、初回のお支払いから 14 日以内なら返金します</li>
-            </ul>
-            <a class="btn btn-primary" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
-          </div>
-        </div>
-        <p class="foot-note">購入するとライセンスキーがメールで届きます。アプリの「ヘルプ → ライセンス…」に入れると有料版になります。お支払いは Lemon Squeezy が扱います。AI チャットはご自身の Anthropic の API キーで動き、その料金は Anthropic へのお支払いになります。</p>
+    <section id="pricing" class="wrap">
+      <div class="split-head reveal">
+        <h2 class="headline">まず無料で。<br>続きは月 980 円。</h2>
+        <p>無料版でも、エディタ・ドラッグ・AI チャット・MCP はすべて使えます。長い動画を透かしなしで出したくなったら有料版へ。</p>
       </div>
+      <div class="prices">
+        <div class="price reveal">
+          <span class="name">無料版</span>
+          <div class="amount">0 円</div>
+          <ul>
+            <li>エディタ・プレビュー・ドラッグ・AI チャット・MCP はすべて使えます</li>
+            <li>プレビューと書き出しは最初の 15 秒まで</li>
+            <li>動画に「Liz CAP」の透かしが入ります</li>
+          </ul>
+          <a class="btn" href="https://github.com/pooh9135/lizcap/releases/latest">ダウンロード</a>
+        </div>
+        <div class="price is-paid reveal">
+          <span class="name">有料版</span>
+          <div class="amount">980 円<small>／月（税込）</small></div>
+          <ul>
+            <li>長さの制限なし</li>
+            <li>透かしなし</li>
+            <li>1 つのキーで 3 台まで</li>
+            <li>いつでも解約でき、初回のお支払いから 14 日以内なら返金します</li>
+          </ul>
+          <a class="btn btn-primary" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
+        </div>
+      </div>
+      <p class="foot-note">購入するとライセンスキーがメールで届きます。アプリの「ヘルプ → ライセンス…」に入れると有料版になります。お支払いは Lemon Squeezy が扱います。AI チャットはご自身の Anthropic の API キーで動き、その料金は Anthropic へのお支払いになります。</p>
     </section>
 
-    <section id="faq">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="chip">よくある質問</span>
-          <h2 class="headline">分からないことは、ここに。</h2>
+    <section id="faq" class="wrap">
+      <div class="faq-grid">
+        <div class="side reveal">
+          <h2 class="headline">よくある質問</h2>
           <p>ほかに分からないことがあれば、<a href="mailto:lizlaboratory7@gmail.com">お問い合わせ</a>ください。</p>
         </div>
-        <div class="card faq reveal">
+        <div class="faq reveal">
           <details>
             <summary>どんなパソコンで動きますか？</summary>
             <p>Windows 10 / 11（64 ビット）で、WebGPU が使える GPU が必要です。ここ数年のパソコンなら、内蔵 GPU でもたいてい動きます。</p>
@@ -228,12 +212,12 @@
       </div>
     </section>
 
-    <section class="cta reveal">
-      <h2 class="headline">今日から、図はコードで。</h2>
-      <p>インストールして、サンプルを開くところから。無料版でも、すべての機能を試せます。</p>
+    <section class="wrap cta reveal">
+      <h2 class="display">今日から、図はコードで。</h2>
+      <p>無料版でも、すべての機能を試せます。</p>
       <div class="actions">
-        <a class="btn btn-primary btn-lg" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード</a>
-        <a class="btn btn-lg" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入</a>
+        <a class="btn btn-primary" href="https://github.com/pooh9135/lizcap/releases/latest">Windows 版をダウンロード <span class="ic">↓</span></a>
+        <a class="btn" href="https://lizcode.lemonsqueezy.com/checkout/buy/5a26a830-2378-44a6-8c75-36f65a2e1088">有料版を購入 <span class="ic">→</span></a>
       </div>
     </section>
   </main>
@@ -252,37 +236,15 @@
   </footer>
   <script>
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const $ = (s, el = document) => el.querySelector(s);
     const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-    if (reduce) { const h = $(".orb video"); h.removeAttribute("autoplay"); h.pause(); }
-
-    // ---- 製品の画面: タブで選んだ所を枠で囲み、説明を変える。触られるまでは 5 秒ごとに進む ----
-    // 位置は screenshot.png（2400×1350）の中の割合
-    const regions = {
-      all:     { off: true, text: "左にプレビュー、中央にコード、右に AI。Cursor と同じ並びです。" },
-      preview: { x: 0.6, y: 4.4, w: 34.9, h: 82.6, text: "書いたらすぐ映るプレビュー。点や円をつかんで動かすと、コードの数字が書き換わります。" },
-      code:    { x: 35.8, y: 4.4, w: 41.6, h: 95.2, text: "TypeScript で書くシーン。座標や play・wait の考え方は Manim と同じです。" },
-      ai:      { x: 77.6, y: 4.4, w: 22.0, h: 95.2, text: "AI チャットに頼むと、コードを書き換えます。変わった所は緑と赤で見え、採用か却下で決めます。" },
-    };
-    const hl = $(".demo .hl"), tabs = $$(".demo .tabs button"), caption = $("[data-caption]");
-    const pick = (i) => {
-      const r = regions[tabs[i].dataset.region];
-      tabs.forEach((t, j) => { t.classList.toggle("is-on", j === i); t.setAttribute("aria-selected", j === i); });
-      hl.classList.toggle("off", !!r.off);
-      if (!r.off) ["x", "y", "w", "h"].forEach((k) => hl.style.setProperty("--" + k, r[k] + "%"));
-      caption.textContent = r.text;
-    };
-    let cur = 0, auto = !reduce, demoSeen = false;
-    tabs.forEach((t, i) => t.addEventListener("click", () => { auto = false; cur = i; pick(i); }));
-    setInterval(() => { if (auto && demoSeen && !document.hidden) { cur = (cur + 1) % tabs.length; pick(cur); } }, 5000);
-    new IntersectionObserver((es) => es.forEach((e) => (demoSeen = e.isIntersecting)), { threshold: 0.5 }).observe($(".demo"));
+    if (reduce) { const h = document.querySelector(".stage video"); h.removeAttribute("autoplay"); h.pause(); }
 
     // ---- できることの映像: 見えている間だけ流す ----
     const vids = new IntersectionObserver((es) => es.forEach((e) => {
       const v = e.target;
       if (e.isIntersecting) { v.preload = "auto"; if (!reduce) v.play().catch(() => {}); } else v.pause();
     }), { threshold: 0.35 });
-    $$(".feature video").forEach((v) => vids.observe(v));
+    $$(".row video").forEach((v) => vids.observe(v));
 
     // ---- 出てくる動き・数字を数える・比べる線を伸ばす ----
     const seen = new IntersectionObserver((es) => es.forEach((e) => {
@@ -295,7 +257,7 @@
         requestAnimationFrame(run);
       });
     }), { threshold: 0.15 });
-    $$(".reveal, .stat").forEach((el) => { el.classList.add("reveal"); seen.observe(el); });
+    $$(".reveal, .stat").forEach((el) => seen.observe(el));
   </script>
 </body>
 </html>
